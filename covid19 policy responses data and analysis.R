@@ -40,13 +40,13 @@ europe$country = car::recode (europe$country, "'Czechia'='Czech_Republic'")
 
 # fill-in the panel with NAs the missing rows          
 europe <-  panel_fill(europe,
-.set_NA = c('cases','deaths'),
-.min =  18276,
-.max = NA,
-.backwards = FALSE,
-.flag = 'miss',
-.i = 'country',
-.t = 'date2',
+                      .set_NA = c('cases','deaths'),
+                      .min =  18276,
+                      .max = NA,
+                      .backwards = FALSE,
+                      .flag = 'miss',
+                      .i = 'country',
+                      .t = 'date2',
 )
 
 # replace the NAs with 0s and add the total European population
@@ -96,10 +96,10 @@ europep <- europep [order(europep$country,europep$date ),]
 
 # add indicators for whether a restriction was in place or not
 for ( i in 1:nrow(europep)){
-  ifelse ((europep$schools[i] >= europep$date[i] | is.na(europep$schools[i]) == TRUE), europep$school.d[i] <- 0, europep$school.d[i] <- 1)
-  ifelse ((europep$events[i] >= europep$date[i] | is.na(europep$events[i]) == TRUE), europep$events.d[i] <- 0, europep$events.d[i] <- 1)
-  ifelse ((europep$lockdown[i] >= europep$date[i] | is.na(europep$lockdown[i]) == TRUE), europep$lockdown.d[i] <- 0, europep$lockdown.d[i] <- 1)
-  }
+  ifelse ((europep$schools[i] > europep$date[i] | is.na(europep$schools[i]) == TRUE), europep$school.d[i] <- 0, europep$school.d[i] <- 1)
+  ifelse ((europep$events[i] > europep$date[i] | is.na(europep$events[i]) == TRUE), europep$events.d[i] <- 0, europep$events.d[i] <- 1)
+  ifelse ((europep$lockdown[i] > europep$date[i] | is.na(europep$lockdown[i]) == TRUE), europep$lockdown.d[i] <- 0, europep$lockdown.d[i] <- 1)
+}
 
 # create indicators for observations after the policy restriction events
 europep$remove.school<-FALSE
@@ -111,7 +111,7 @@ for (i in 2:nrow(europep)){
     europep$remove.school[i] = TRUE
   else
     next
-  }
+}
 
 for (i in 2:nrow(europep)){
   if ((europep$country[i] == europep$country[i-1]) & europep$events.d[i-1] == 1)
@@ -146,6 +146,7 @@ free<-read.table('./data/freedom_house_data2020.txt', header=T, sep='\t', dec='.
 free <- free %>%
   filter (year == 2020) %>%
   mutate (iso3c = countrycode(country, 'country.name','iso3c')) %>%
+  filter (row_number()!=136) %>% # remove second Cyprus!
   select (iso3c, free)
 
 # merge with the rest
@@ -172,37 +173,84 @@ govs<-read_csv('./data/Corona policy sudy - Sheet1.csv')
 
 europep<-left_join (europep, govs, by='country')
 
-# Save data files ---------------------------------------------------------
-save(europep, file = './output data/europep.RData')
+# Save full data files ---------------------------------------------------------
+save(europep, file = './output data/europep08042020.RData')
 
-write.csv(europep, file = './output data/europep.csv')
+write.csv(europep, file = './output data/europep08042020.csv')
 
-# Statistical modesl (logistic regression) --------------------------------
-
+# Subset for TVC analysis and save--------------------------------
 # subset the data so that countries exit the data once the restrictions are enacted
-ds <- europep[europep$remove.school==FALSE, ] # for schools
-de <- europep[europep$remove.events==FALSE, ] # for events
-dl <- europep[europep$remove.lockdown==FALSE, ] # for lockdowns
+tvc.s <- europep[europep$remove.school==FALSE, ] #schools
 
-summary(glm(school.d ~ cases , family = 'binomial', data = ds))
-summary(glm(events.d ~ cases + date, family = 'binomial', data = de))
-summary(glm(lockdown.d ~ cases + date + sgi_experts, family = 'binomial', data = dl))
+tvc.e <- europep[europep$remove.events==FALSE, ] #events
 
-# Statistical modesl (linear regression) --------------------------------
+tvc.l <- europep[europep$remove.lockdown==FALSE, ] #lockdown
 
-# subset the data for the dates of restrictions or last observed day for those with none
-ds2 <- europep [(europep$school.d == 1 & europep$remove.school == FALSE) |
-                 (is.na(europep$schools) & europep$date == max (europep$date)),]
+write.csv(tvc.s, file = './output data/tvc_s_08042020.csv')
+write.csv(tvc.e, file = './output data/tvc_e_08042020.csv')
+write.csv(tvc.l, file = './output data/tvc_l_08042020.csv')
 
-de2 <- europep [(europep$events.d == 1 & europep$remove.events == FALSE) |
-                  (is.na(europep$events) & europep$date == max (europep$date)),]
-
-dl2 <- europep [(europep$lockdown.d == 1 & europep$remove.lockdown == FALSE) |
-                  (is.na(europep$lockdown) & europep$date == max (europep$date)),]
+# Subset for OLS analysis and save--------------------------------
+# subset the data to the dates on which restrictions occured and the last they if they did not
 
 
-summary(lm(log(cum.cases) ~ federalism + pm_party_family + popData2018, data=dl2))
+ols.s <- europep [(europep$school.d == 1 & europep$remove.school == FALSE) |
+                    (is.na(europep$schools) & europep$date == max (europep$date)),]
+ols.e <- europep [(europep$events.d == 1 & europep$remove.events == FALSE) |
+                    (is.na(europep$events) & europep$date == max (europep$date)),]
+ols.l <- europep [(europep$lockdown.d == 1 & europep$remove.lockdown == FALSE) |
+                    (is.na(europep$lockdown) & europep$date == max (europep$date)),]
+write.csv(ols.s, file = './output data/ols_s_08042020.csv')
+write.csv(ols.e, file = './output data/ols_e_08042020.csv')
+write.csv(ols.l, file = './output data/ols_l_08042020.csv')
 
+# Subset for survival analysis and save--------------------------------
+# subset the data to the dates on which restrictions occured and the last they if they did not
+
+first.cases <- europep %>% 
+  group_by(country) %>% 
+  filter(cum.cases >= 1) %>%
+  filter (row_number() == 1) %>%
+  mutate (first.case.date = date) %>%
+  select (country, first.case.date)
+
+europep<-left_join (europep, first.cases, by = 'country')
+
+surv.s <- europep %>% 
+  group_by(country) %>% 
+  filter(date == schools | date == tail(date,1)) %>% 
+  group_by(country) %>%
+  filter (row_number() == 1) %>%
+  mutate (duration = as.numeric(date - first.case.date),
+          growth.cases.daily = cum.cases / as.numeric(duration),
+          censored = ifelse (is.na(schools),1,0))
+
+
+surv.e <- europep %>% 
+  group_by(country) %>% 
+  filter(date == events | date == tail(date,1)) %>% 
+  group_by(country) %>%
+  filter (row_number() == 1) %>%
+  mutate (duration = as.numeric(date - first.case.date),
+          growth.cases.daily = cum.cases / as.numeric(duration),
+          censored = ifelse (is.na(events),1,0))
+
+
+surv.l <- europep %>% 
+  group_by(country) %>% 
+  filter(date == lockdown | date == tail(date,1)) %>% 
+  group_by(country) %>%
+  filter (row_number() == 1) %>%
+  mutate (duration = as.numeric(date - first.case.date),
+          growth.cases.daily = cum.cases / as.numeric(duration),
+          censored = ifelse (is.na(lockdown),1,0))
+
+# to check
+#data.frame(surv.l[, c('country','date', 'cum.cases', 'first.case.date', 'duration', 'growth.cases.daily', 'censored')]) 
+
+write.csv(surv.s, file = './output data/surv_s_08042020.csv')
+write.csv(surv.e, file = './output data/surv_e_08042020.csv')
+write.csv(surv.l, file = './output data/surv_l_08042020.csv')
 
 
 # Plot of restriction date per number of cases ----------------------------
