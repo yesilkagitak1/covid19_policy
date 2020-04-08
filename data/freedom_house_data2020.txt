@@ -1,0 +1,1676 @@
+country	year	free
+Abkhazia	2020	40
+Afghanistan	2020	27
+Albania	2020	67
+Algeria	2020	34
+Andorra	2020	94
+Angola	2020	32
+Antigua and Barbuda	2020	85
+Argentina	2020	85
+Armenia	2020	53
+Australia	2020	97
+Austria	2020	93
+Azerbaijan	2020	10
+Bahamas	2020	91
+Bahrain	2020	11
+Bangladesh	2020	39
+Barbados	2020	95
+Belarus	2020	19
+Belgium	2020	96
+Belize	2020	86
+Benin	2020	66
+Bhutan	2020	59
+Bolivia	2020	63
+Bosnia and Herzegovina	2020	53
+Botswana	2020	72
+Brazil	2020	75
+Brunei	2020	28
+Bulgaria	2020	80
+Burkina Faso	2020	56
+Burundi	2020	13
+Cabo Verde	2020	92
+Cambodia	2020	25
+Cameroon	2020	18
+Canada	2020	98
+Central African Republic	2020	10
+Chad	2020	17
+Chile	2020	90
+China	2020	10
+Colombia	2020	66
+Comoros	2020	44
+Congo (Brazzaville)	2020	20
+Congo (Kinshasa)	2020	18
+Costa Rica	2020	91
+Cote dIvoire	2020	51
+Crimea	2020	8
+Croatia	2020	85
+Cuba	2020	14
+Cyprus	2020	94
+Czech Republic	2020	91
+Denmark	2020	97
+Djibouti	2020	24
+Dominica	2020	93
+Dominican Republic	2020	67
+Eastern Donbas	2020	5
+Ecuador	2020	65
+Egypt	2020	21
+El Salvador	2020	66
+Equatorial Guinea	2020	6
+Eritrea	2020	2
+Estonia	2020	94
+Eswatini	2020	19
+Ethiopia	2020	24
+Fiji	2020	60
+Finland	2020	100
+France	2020	90
+Gabon	2020	22
+Gaza Strip	2020	11
+Georgia	2020	61
+Germany	2020	94
+Ghana	2020	82
+Greece	2020	88
+Grenada	2020	89
+Guatemala	2020	52
+Guinea	2020	40
+Guinea-Bissau	2020	46
+Guyana	2020	74
+Haiti	2020	38
+Honduras	2020	45
+Hong Kong	2020	55
+Hungary	2020	70
+Iceland	2020	94
+India	2020	71
+Indian Kashmir	2020	28
+Indonesia	2020	61
+Iran	2020	17
+Iraq	2020	31
+Ireland	2020	97
+Israel	2020	76
+Italy	2020	89
+Jamaica	2020	78
+Japan	2020	96
+Jordan	2020	37
+Kazakhstan	2020	23
+Kenya	2020	48
+Kiribati	2020	93
+Kosovo	2020	56
+Kuwait	2020	36
+Kyrgyzstan	2020	39
+Laos	2020	14
+Latvia	2020	89
+Lebanon	2020	44
+Lesotho	2020	63
+Liberia	2020	60
+Libya	2020	9
+Liechtenstein	2020	90
+Lithuania	2020	91
+Luxembourg	2020	98
+Madagascar	2020	61
+Malawi	2020	62
+Malaysia	2020	52
+Maldives	2020	40
+Mali	2020	41
+Malta	2020	90
+Marshall Islands	2020	93
+Mauritania	2020	34
+Mauritius	2020	89
+Mexico	2020	62
+Micronesia	2020	92
+Moldova	2020	60
+Monaco	2020	83
+Mongolia	2020	84
+Montenegro	2020	62
+Morocco	2020	37
+Mozambique	2020	45
+Myanmar	2020	30
+Nagorno-Karabakh	2020	34
+Namibia	2020	77
+Nauru	2020	77
+Nepal	2020	56
+Netherlands	2020	99
+New Zealand	2020	97
+Nicaragua	2020	31
+Niger	2020	48
+Nigeria	2020	47
+North Korea	2020	3
+North Macedonia	2020	63
+Northern Cyprus	2020	81
+Norway	2020	100
+Oman	2020	23
+Pakistan	2020	38
+Pakistani Kashmir	2020	28
+Palau	2020	92
+Panama	2020	84
+Papua New Guinea	2020	62
+Paraguay	2020	65
+Peru	2020	72
+Philippines	2020	59
+Poland	2020	84
+Portugal	2020	96
+Qatar	2020	25
+Romania	2020	83
+Russia	2020	20
+Rwanda	2020	22
+Samoa	2020	81
+San Marino	2020	95
+Sao Tome and Principe	2020	84
+Saudi Arabia	2020	7
+Senegal	2020	71
+Serbia	2020	66
+Seychelles	2020	72
+Sierra Leone	2020	65
+Singapore	2020	50
+Slovakia	2020	88
+Slovenia	2020	94
+Solomon Islands	2020	79
+Somalia	2020	7
+Somaliland	2020	41
+South Africa	2020	79
+South Korea	2020	83
+South Ossetia	2020	10
+South Sudan	2020	2
+Spain	2020	92
+Sri Lanka	2020	56
+St. Kitts and Nevis	2020	89
+St. Lucia	2020	92
+St. Vincent and the Grenadines	2020	91
+Sudan	2020	12
+Suriname	2020	75
+Sweden	2020	100
+Switzerland	2020	96
+Syria	2020	0
+Taiwan	2020	93
+Tajikistan	2020	9
+Tanzania	2020	40
+Thailand	2020	32
+The Gambia	2020	46
+Tibet	2020	1
+Timor-Leste	2020	71
+Togo	2020	44
+Tonga	2020	79
+Transnistria	2020	22
+Trinidad and Tobago	2020	82
+Tunisia	2020	70
+Turkey	2020	32
+Turkmenistan	2020	2
+Tuvalu	2020	93
+Uganda	2020	34
+Ukraine	2020	62
+United Arab Emirates	2020	17
+United Kingdom	2020	94
+United States	2020	86
+Uruguay	2020	98
+Uzbekistan	2020	10
+Vanuatu	2020	82
+Venezuela	2020	16
+Vietnam	2020	20
+West Bank	2020	25
+Western Sahara	2020	4
+Yemen	2020	11
+Zambia	2020	54
+Zimbabwe	2020	29
+Abkhazia	2019	41
+Afghanistan	2019	27
+Albania	2019	68
+Algeria	2019	34
+Andorra	2019	94
+Angola	2019	31
+Antigua and Barbuda	2019	84
+Argentina	2019	84
+Armenia	2019	51
+Australia	2019	98
+Austria	2019	93
+Azerbaijan	2019	11
+Bahamas	2019	91
+Bahrain	2019	12
+Bangladesh	2019	41
+Barbados	2019	96
+Belarus	2019	19
+Belgium	2019	96
+Belize	2019	86
+Benin	2019	79
+Bhutan	2019	59
+Bolivia	2019	67
+Bosnia and Herzegovina	2019	53
+Botswana	2019	72
+Brazil	2019	75
+Brunei	2019	29
+Bulgaria	2019	80
+Burkina Faso	2019	60
+Burundi	2019	14
+Cabo Verde	2019	90
+Cambodia	2019	26
+Cameroon	2019	19
+Canada	2019	99
+Central African Republic	2019	9
+Chad	2019	17
+Chile	2019	94
+China	2019	11
+Colombia	2019	66
+Comoros	2019	50
+Congo (Brazzaville)	2019	21
+Congo (Kinshasa)	2019	15
+Costa Rica	2019	91
+Cote dIvoire	2019	51
+Crimea	2019	8
+Croatia	2019	85
+Cuba	2019	14
+Cyprus	2019	94
+Czech Republic	2019	91
+Denmark	2019	97
+Djibouti	2019	26
+Dominica	2019	93
+Dominican Republic	2019	67
+Ecuador	2019	63
+Egypt	2019	22
+El Salvador	2019	67
+Equatorial Guinea	2019	6
+Eritrea	2019	2
+Estonia	2019	94
+Eswatini	2019	16
+Ethiopia	2019	19
+Fiji	2019	61
+Finland	2019	100
+France	2019	90
+Gabon	2019	23
+Gaza Strip	2019	11
+Georgia	2019	63
+Germany	2019	94
+Ghana	2019	83
+Greece	2019	87
+Grenada	2019	89
+Guatemala	2019	53
+Guinea	2019	43
+Guinea-Bissau	2019	42
+Guyana	2019	75
+Haiti	2019	41
+Honduras	2019	46
+Hong Kong	2019	59
+Hungary	2019	70
+Iceland	2019	94
+India	2019	75
+Indian Kashmir	2019	49
+Indonesia	2019	62
+Iran	2019	18
+Iraq	2019	32
+Ireland	2019	97
+Israel	2019	78
+Italy	2019	89
+Jamaica	2019	78
+Japan	2019	96
+Jordan	2019	37
+Kazakhstan	2019	22
+Kenya	2019	48
+Kiribati	2019	93
+Kosovo	2019	54
+Kuwait	2019	36
+Kyrgyzstan	2019	38
+Laos	2019	14
+Latvia	2019	87
+Lebanon	2019	45
+Lesotho	2019	63
+Liberia	2019	62
+Libya	2019	9
+Liechtenstein	2019	90
+Lithuania	2019	91
+Luxembourg	2019	98
+Madagascar	2019	56
+Malawi	2019	64
+Malaysia	2019	52
+Maldives	2019	35
+Mali	2019	44
+Malta	2019	91
+Marshall Islands	2019	93
+Mauritania	2019	32
+Mauritius	2019	89
+Mexico	2019	63
+Micronesia	2019	92
+Moldova	2019	58
+Monaco	2019	82
+Mongolia	2019	85
+Montenegro	2019	65
+Morocco	2019	39
+Mozambique	2019	51
+Myanmar	2019	30
+Nagorno-Karabakh	2019	31
+Namibia	2019	75
+Nauru	2019	78
+Nepal	2019	54
+Netherlands	2019	99
+New Zealand	2019	98
+Nicaragua	2019	32
+Niger	2019	49
+Nigeria	2019	50
+North Korea	2019	3
+North Macedonia	2019	59
+Northern Cyprus	2019	81
+Norway	2019	100
+Oman	2019	23
+Pakistan	2019	39
+Pakistani Kashmir	2019	28
+Palau	2019	92
+Panama	2019	84
+Papua New Guinea	2019	64
+Paraguay	2019	65
+Peru	2019	73
+Philippines	2019	61
+Poland	2019	84
+Portugal	2019	96
+Qatar	2019	25
+Romania	2019	81
+Russia	2019	20
+Rwanda	2019	23
+Samoa	2019	81
+San Marino	2019	95
+Sao Tome and Principe	2019	83
+Saudi Arabia	2019	7
+Senegal	2019	72
+Serbia	2019	67
+Seychelles	2019	71
+Sierra Leone	2019	65
+Singapore	2019	51
+Slovakia	2019	88
+Slovenia	2019	94
+Solomon Islands	2019	79
+Somalia	2019	7
+Somaliland	2019	43
+South Africa	2019	79
+South Korea	2019	83
+South Ossetia	2019	10
+South Sudan	2019	2
+Spain	2019	94
+Sri Lanka	2019	56
+St. Kitts and Nevis	2019	89
+St. Lucia	2019	92
+St. Vincent and the Grenadines	2019	91
+Sudan	2019	7
+Suriname	2019	77
+Sweden	2019	100
+Switzerland	2019	96
+Syria	2019	0
+Taiwan	2019	93
+Tajikistan	2019	9
+Tanzania	2019	45
+Thailand	2019	30
+The Gambia	2019	45
+Tibet	2019	1
+Timor-Leste	2019	70
+Togo	2019	43
+Tonga	2019	79
+Transnistria	2019	24
+Trinidad and Tobago	2019	82
+Tunisia	2019	69
+Turkey	2019	31
+Turkmenistan	2019	2
+Tuvalu	2019	93
+Uganda	2019	36
+Ukraine	2019	60
+United Arab Emirates	2019	17
+United Kingdom	2019	93
+United States	2019	86
+Uruguay	2019	98
+Uzbekistan	2019	9
+Vanuatu	2019	82
+Venezuela	2019	19
+Vietnam	2019	20
+West Bank	2019	25
+Western Sahara	2019	4
+Yemen	2019	11
+Zambia	2019	54
+Zimbabwe	2019	31
+Abkhazia	2018	41
+Afghanistan	2018	26
+Albania	2018	68
+Algeria	2018	35
+Andorra	2018	96
+Angola	2018	26
+Antigua and Barbuda	2018	83
+Argentina	2018	83
+Armenia	2018	45
+Australia	2018	98
+Austria	2018	94
+Azerbaijan	2018	12
+Bahamas	2018	91
+Bahrain	2018	12
+Bangladesh	2018	45
+Barbados	2018	96
+Belarus	2018	21
+Belgium	2018	95
+Belize	2018	86
+Benin	2018	82
+Bhutan	2018	55
+Bolivia	2018	67
+Bosnia and Herzegovina	2018	55
+Botswana	2018	72
+Brazil	2018	78
+Brunei	2018	28
+Bulgaria	2018	80
+Burkina Faso	2018	60
+Burundi	2018	18
+Cabo Verde	2018	90
+Cambodia	2018	30
+Cameroon	2018	22
+Canada	2018	99
+Central African Republic	2018	9
+Chad	2018	18
+Chile	2018	94
+China	2018	14
+Colombia	2018	65
+Comoros	2018	55
+Congo (Brazzaville)	2018	21
+Congo (Kinshasa)	2018	17
+Costa Rica	2018	91
+Cote dIvoire	2018	51
+Crimea	2018	9
+Croatia	2018	86
+Cuba	2018	14
+Cyprus	2018	94
+Czech Republic	2018	93
+Denmark	2018	97
+Djibouti	2018	26
+Dominica	2018	93
+Dominican Republic	2018	67
+Ecuador	2018	60
+Egypt	2018	26
+El Salvador	2018	70
+Equatorial Guinea	2018	7
+Eritrea	2018	3
+Estonia	2018	94
+Eswatini	2018	16
+Ethiopia	2018	12
+Fiji	2018	59
+Finland	2018	100
+France	2018	90
+Gabon	2018	23
+Gaza Strip	2018	12
+Georgia	2018	64
+Germany	2018	94
+Ghana	2018	83
+Greece	2018	85
+Grenada	2018	88
+Guatemala	2018	56
+Guinea	2018	41
+Guinea-Bissau	2018	41
+Guyana	2018	74
+Haiti	2018	41
+Honduras	2018	46
+Hong Kong	2018	59
+Hungary	2018	72
+Iceland	2018	95
+India	2018	77
+Indian Kashmir	2018	49
+Indonesia	2018	64
+Iran	2018	18
+Iraq	2018	31
+Ireland	2018	96
+Israel	2018	79
+Italy	2018	89
+Jamaica	2018	77
+Japan	2018	96
+Jordan	2018	37
+Kazakhstan	2018	22
+Kenya	2018	48
+Kiribati	2018	93
+Kosovo	2018	52
+Kuwait	2018	36
+Kyrgyzstan	2018	37
+Laos	2018	12
+Latvia	2018	87
+Lebanon	2018	43
+Lesotho	2018	64
+Liberia	2018	62
+Libya	2018	9
+Liechtenstein	2018	90
+Lithuania	2018	91
+Luxembourg	2018	98
+Madagascar	2018	56
+Malawi	2018	63
+Malaysia	2018	45
+Maldives	2018	35
+Mali	2018	44
+Malta	2018	92
+Marshall Islands	2018	92
+Mauritania	2018	30
+Mauritius	2018	89
+Mexico	2018	62
+Micronesia	2018	93
+Moldova	2018	61
+Monaco	2018	82
+Mongolia	2018	85
+Montenegro	2018	67
+Morocco	2018	39
+Mozambique	2018	52
+Myanmar	2018	31
+Nagorno-Karabakh	2018	30
+Namibia	2018	77
+Nauru	2018	81
+Nepal	2018	55
+Netherlands	2018	99
+New Zealand	2018	98
+Nicaragua	2018	44
+Niger	2018	49
+Nigeria	2018	50
+North Korea	2018	3
+North Macedonia	2018	58
+Northern Cyprus	2018	81
+Norway	2018	100
+Oman	2018	23
+Pakistan	2018	43
+Pakistani Kashmir	2018	28
+Palau	2018	92
+Panama	2018	83
+Papua New Guinea	2018	63
+Paraguay	2018	64
+Peru	2018	73
+Philippines	2018	62
+Poland	2018	85
+Portugal	2018	97
+Qatar	2018	24
+Romania	2018	84
+Russia	2018	20
+Rwanda	2018	23
+Samoa	2018	80
+San Marino	2018	97
+Sao Tome and Principe	2018	82
+Saudi Arabia	2018	7
+Senegal	2018	75
+Serbia	2018	73
+Seychelles	2018	71
+Sierra Leone	2018	66
+Singapore	2018	52
+Slovakia	2018	89
+Slovenia	2018	93
+Solomon Islands	2018	72
+Somalia	2018	7
+Somaliland	2018	44
+South Africa	2018	78
+South Korea	2018	84
+South Ossetia	2018	10
+South Sudan	2018	2
+Spain	2018	94
+Sri Lanka	2018	55
+St. Kitts and Nevis	2018	89
+St. Lucia	2018	91
+St. Vincent and the Grenadines	2018	90
+Sudan	2018	8
+Suriname	2018	78
+Sweden	2018	100
+Switzerland	2018	96
+Syria	2018	-1
+Taiwan	2018	93
+Tajikistan	2018	11
+Tanzania	2018	52
+Thailand	2018	31
+The Gambia	2018	41
+Tibet	2018	1
+Timor-Leste	2018	69
+Togo	2018	47
+Tonga	2018	75
+Transnistria	2018	24
+Trinidad and Tobago	2018	81
+Tunisia	2018	70
+Turkey	2018	32
+Turkmenistan	2018	4
+Tuvalu	2018	94
+Uganda	2018	37
+Ukraine	2018	62
+United Arab Emirates	2018	17
+United Kingdom	2018	94
+United States	2018	86
+Uruguay	2018	98
+Uzbekistan	2018	7
+Vanuatu	2018	81
+Venezuela	2018	26
+Vietnam	2018	20
+West Bank	2018	28
+Western Sahara	2018	4
+Yemen	2018	13
+Zambia	2018	55
+Zimbabwe	2018	30
+Abkhazia	2017	41
+Afghanistan	2017	24
+Albania	2017	68
+Algeria	2017	35
+Andorra	2017	95
+Angola	2017	24
+Antigua and Barbuda	2017	83
+Argentina	2017	82
+Armenia	2017	45
+Australia	2017	98
+Austria	2017	95
+Azerbaijan	2017	14
+Bahamas	2017	91
+Bahrain	2017	12
+Bangladesh	2017	47
+Barbados	2017	98
+Belarus	2017	20
+Belgium	2017	95
+Belize	2017	87
+Benin	2017	82
+Bhutan	2017	55
+Bolivia	2017	68
+Bosnia and Herzegovina	2017	55
+Botswana	2017	72
+Brazil	2017	79
+Brunei	2017	29
+Bulgaria	2017	80
+Burkina Faso	2017	63
+Burundi	2017	19
+Cabo Verde	2017	90
+Cambodia	2017	31
+Cameroon	2017	24
+Canada	2017	99
+Central African Republic	2017	10
+Chad	2017	18
+Chile	2017	94
+China	2017	15
+Colombia	2017	64
+Comoros	2017	55
+Congo (Brazzaville)	2017	27
+Congo (Kinshasa)	2017	19
+Costa Rica	2017	91
+Cote dIvoire	2017	52
+Crimea	2017	9
+Croatia	2017	87
+Cuba	2017	15
+Cyprus	2017	94
+Czech Republic	2017	94
+Denmark	2017	97
+Djibouti	2017	26
+Dominica	2017	95
+Dominican Republic	2017	68
+Ecuador	2017	57
+Egypt	2017	26
+El Salvador	2017	70
+Equatorial Guinea	2017	8
+Eritrea	2017	3
+Estonia	2017	94
+Eswatini	2017	18
+Ethiopia	2017	12
+Fiji	2017	59
+Finland	2017	100
+France	2017	90
+Gabon	2017	32
+Gaza Strip	2017	12
+Georgia	2017	64
+Germany	2017	95
+Ghana	2017	83
+Greece	2017	84
+Grenada	2017	89
+Guatemala	2017	54
+Guinea	2017	41
+Guinea-Bissau	2017	40
+Guyana	2017	74
+Haiti	2017	39
+Honduras	2017	46
+Hong Kong	2017	61
+Hungary	2017	76
+Iceland	2017	97
+India	2017	77
+Indian Kashmir	2017	50
+Indonesia	2017	65
+Iran	2017	17
+Iraq	2017	27
+Ireland	2017	96
+Israel	2017	80
+Italy	2017	89
+Jamaica	2017	75
+Japan	2017	96
+Jordan	2017	37
+Kazakhstan	2017	22
+Kenya	2017	51
+Kiribati	2017	92
+Kosovo	2017	52
+Kuwait	2017	36
+Kyrgyzstan	2017	37
+Laos	2017	12
+Latvia	2017	87
+Lebanon	2017	44
+Lesotho	2017	64
+Liberia	2017	62
+Libya	2017	13
+Liechtenstein	2017	91
+Lithuania	2017	91
+Luxembourg	2017	98
+Madagascar	2017	56
+Malawi	2017	63
+Malaysia	2017	44
+Maldives	2017	40
+Mali	2017	45
+Malta	2017	96
+Marshall Islands	2017	92
+Mauritania	2017	30
+Mauritius	2017	89
+Mexico	2017	65
+Micronesia	2017	93
+Moldova	2017	62
+Monaco	2017	84
+Mongolia	2017	85
+Montenegro	2017	69
+Morocco	2017	41
+Mozambique	2017	53
+Myanmar	2017	32
+Nagorno-Karabakh	2017	33
+Namibia	2017	77
+Nauru	2017	81
+Nepal	2017	52
+Netherlands	2017	99
+New Zealand	2017	98
+Nicaragua	2017	47
+Niger	2017	49
+Nigeria	2017	50
+North Korea	2017	3
+North Macedonia	2017	57
+Northern Cyprus	2017	80
+Norway	2017	100
+Oman	2017	25
+Pakistan	2017	43
+Pakistani Kashmir	2017	28
+Palau	2017	92
+Panama	2017	83
+Papua New Guinea	2017	64
+Paraguay	2017	64
+Peru	2017	72
+Philippines	2017	63
+Poland	2017	89
+Portugal	2017	97
+Qatar	2017	26
+Romania	2017	84
+Russia	2017	20
+Rwanda	2017	24
+Samoa	2017	80
+San Marino	2017	97
+Sao Tome and Principe	2017	81
+Saudi Arabia	2017	10
+Senegal	2017	78
+Serbia	2017	76
+Seychelles	2017	71
+Sierra Leone	2017	66
+Singapore	2017	51
+Slovakia	2017	89
+Slovenia	2017	92
+Solomon Islands	2017	71
+Somalia	2017	5
+Somaliland	2017	40
+South Africa	2017	78
+South Korea	2017	82
+South Ossetia	2017	11
+South Sudan	2017	4
+Spain	2017	94
+Sri Lanka	2017	56
+St. Kitts and Nevis	2017	89
+St. Lucia	2017	92
+St. Vincent and the Grenadines	2017	91
+Sudan	2017	6
+Suriname	2017	77
+Sweden	2017	100
+Switzerland	2017	96
+Syria	2017	-1
+Taiwan	2017	91
+Tajikistan	2017	11
+Tanzania	2017	58
+Thailand	2017	32
+The Gambia	2017	20
+Tibet	2017	1
+Timor-Leste	2017	65
+Togo	2017	48
+Tonga	2017	74
+Transnistria	2017	24
+Trinidad and Tobago	2017	81
+Tunisia	2017	78
+Turkey	2017	38
+Turkmenistan	2017	4
+Tuvalu	2017	94
+Uganda	2017	35
+Ukraine	2017	61
+United Arab Emirates	2017	20
+United Kingdom	2017	95
+United States	2017	89
+Uruguay	2017	98
+Uzbekistan	2017	3
+Vanuatu	2017	80
+Venezuela	2017	30
+Vietnam	2017	20
+West Bank	2017	28
+Western Sahara	2017	4
+Yemen	2017	14
+Zambia	2017	56
+Zimbabwe	2017	32
+Abkhazia	2016	42
+Afghanistan	2016	24
+Albania	2016	67
+Algeria	2016	35
+Andorra	2016	96
+Angola	2016	24
+Antigua and Barbuda	2016	82
+Argentina	2016	79
+Armenia	2016	46
+Australia	2016	98
+Austria	2016	95
+Azerbaijan	2016	16
+Bahamas	2016	92
+Bahrain	2016	14
+Bangladesh	2016	49
+Barbados	2016	98
+Belarus	2016	17
+Belgium	2016	96
+Belize	2016	87
+Benin	2016	82
+Bhutan	2016	56
+Bolivia	2016	68
+Bosnia and Herzegovina	2016	57
+Botswana	2016	73
+Brazil	2016	81
+Brunei	2016	29
+Bulgaria	2016	80
+Burkina Faso	2016	59
+Burundi	2016	19
+Cabo Verde	2016	90
+Cambodia	2016	32
+Cameroon	2016	24
+Canada	2016	99
+Central African Republic	2016	7
+Chad	2016	20
+Chile	2016	95
+China	2016	16
+Colombia	2016	63
+Comoros	2016	55
+Congo (Brazzaville)	2016	28
+Congo (Kinshasa)	2016	25
+Costa Rica	2016	90
+Cote dIvoire	2016	51
+Crimea	2016	9
+Croatia	2016	87
+Cuba	2016	15
+Cyprus	2016	94
+Czech Republic	2016	95
+Denmark	2016	98
+Djibouti	2016	28
+Dominica	2016	95
+Dominican Republic	2016	70
+Ecuador	2016	59
+Egypt	2016	27
+El Salvador	2016	69
+Equatorial Guinea	2016	8
+Eritrea	2016	3
+Estonia	2016	94
+Eswatini	2016	18
+Ethiopia	2016	15
+Fiji	2016	62
+Finland	2016	100
+France	2016	91
+Gabon	2016	34
+Gaza Strip	2016	12
+Georgia	2016	64
+Germany	2016	95
+Ghana	2016	83
+Greece	2016	83
+Grenada	2016	89
+Guatemala	2016	54
+Guinea	2016	40
+Guinea-Bissau	2016	39
+Guyana	2016	74
+Haiti	2016	41
+Honduras	2016	45
+Hong Kong	2016	63
+Hungary	2016	79
+Iceland	2016	100
+India	2016	77
+Indian Kashmir	2016	51
+Indonesia	2016	65
+Iran	2016	17
+Iraq	2016	27
+Ireland	2016	96
+Israel	2016	80
+Italy	2016	89
+Jamaica	2016	75
+Japan	2016	96
+Jordan	2016	36
+Kazakhstan	2016	24
+Kenya	2016	51
+Kiribati	2016	91
+Kosovo	2016	52
+Kuwait	2016	36
+Kyrgyzstan	2016	38
+Laos	2016	12
+Latvia	2016	86
+Lebanon	2016	43
+Lesotho	2016	67
+Liberia	2016	61
+Libya	2016	20
+Liechtenstein	2016	98
+Lithuania	2016	91
+Luxembourg	2016	98
+Madagascar	2016	56
+Malawi	2016	64
+Malaysia	2016	45
+Maldives	2016	43
+Mali	2016	45
+Malta	2016	96
+Marshall Islands	2016	92
+Mauritania	2016	30
+Mauritius	2016	90
+Mexico	2016	65
+Micronesia	2016	93
+Moldova	2016	60
+Monaco	2016	88
+Mongolia	2016	86
+Montenegro	2016	70
+Morocco	2016	41
+Mozambique	2016	56
+Myanmar	2016	28
+Nagorno-Karabakh	2016	33
+Namibia	2016	77
+Nauru	2016	84
+Nepal	2016	51
+Netherlands	2016	99
+New Zealand	2016	98
+Nicaragua	2016	54
+Niger	2016	52
+Nigeria	2016	48
+North Korea	2016	3
+North Macedonia	2016	57
+Northern Cyprus	2016	79
+Norway	2016	100
+Oman	2016	25
+Pakistan	2016	41
+Pakistani Kashmir	2016	28
+Palau	2016	92
+Panama	2016	83
+Papua New Guinea	2016	59
+Paraguay	2016	64
+Peru	2016	71
+Philippines	2016	65
+Poland	2016	93
+Portugal	2016	97
+Puerto Rico	2016	90
+Qatar	2016	27
+Romania	2016	83
+Russia	2016	22
+Rwanda	2016	24
+Samoa	2016	80
+San Marino	2016	100
+Sao Tome and Principe	2016	81
+Saudi Arabia	2016	10
+Senegal	2016	78
+Serbia	2016	78
+Seychelles	2016	68
+Sierra Leone	2016	65
+Singapore	2016	51
+Slovakia	2016	89
+Slovenia	2016	92
+Solomon Islands	2016	68
+Somalia	2016	2
+Somaliland	2016	40
+South Africa	2016	79
+South Korea	2016	83
+South Ossetia	2016	11
+South Sudan	2016	14
+Spain	2016	95
+Sri Lanka	2016	55
+St. Kitts and Nevis	2016	88
+St. Lucia	2016	92
+St. Vincent and the Grenadines	2016	91
+Sudan	2016	6
+Suriname	2016	77
+Sweden	2016	100
+Switzerland	2016	96
+Syria	2016	-1
+Taiwan	2016	89
+Tajikistan	2016	16
+Tanzania	2016	60
+Thailand	2016	32
+The Gambia	2016	18
+Tibet	2016	1
+Timor-Leste	2016	65
+Togo	2016	48
+Tonga	2016	75
+Transnistria	2016	24
+Trinidad and Tobago	2016	81
+Tunisia	2016	79
+Turkey	2016	53
+Turkmenistan	2016	4
+Tuvalu	2016	94
+Uganda	2016	36
+Ukraine	2016	61
+United Arab Emirates	2016	20
+United Kingdom	2016	95
+United States	2016	90
+Uruguay	2016	98
+Uzbekistan	2016	3
+Vanuatu	2016	78
+Venezuela	2016	35
+Vietnam	2016	20
+West Bank	2016	30
+Western Sahara	2016	4
+Yemen	2016	17
+Zambia	2016	60
+Zimbabwe	2016	32
+Abkhazia	2015	41
+Afghanistan	2015	24
+Albania	2015	67
+Algeria	2015	34
+Andorra	2015	96
+Angola	2015	28
+Antigua and Barbuda	2015	80
+Argentina	2015	80
+Armenia	2015	46
+Australia	2015	97
+Austria	2015	96
+Azerbaijan	2015	20
+Bahamas	2015	96
+Bahrain	2015	15
+Bangladesh	2015	50
+Barbados	2015	99
+Belarus	2015	14
+Belgium	2015	97
+Belize	2015	87
+Benin	2015	81
+Bhutan	2015	56
+Bolivia	2015	68
+Bosnia and Herzegovina	2015	60
+Botswana	2015	73
+Brazil	2015	81
+Brunei	2015	30
+Bulgaria	2015	79
+Burkina Faso	2015	45
+Burundi	2015	32
+Cabo Verde	2015	90
+Cambodia	2015	31
+Cameroon	2015	25
+Canada	2015	98
+Central African Republic	2015	6
+Chad	2015	21
+Chile	2015	95
+China	2015	17
+Colombia	2015	63
+Comoros	2015	55
+Congo (Brazzaville)	2015	30
+Congo (Kinshasa)	2015	25
+Costa Rica	2015	90
+Cote dIvoire	2015	46
+Crimea	2015	10
+Croatia	2015	86
+Cuba	2015	14
+Cyprus	2015	93
+Czech Republic	2015	95
+Denmark	2015	98
+Djibouti	2015	28
+Dominica	2015	95
+Dominican Republic	2015	73
+Ecuador	2015	59
+Egypt	2015	26
+El Salvador	2015	75
+Equatorial Guinea	2015	8
+Eritrea	2015	3
+Estonia	2015	95
+Eswatini	2015	18
+Ethiopia	2015	18
+Fiji	2015	60
+Finland	2015	100
+France	2015	95
+Gabon	2015	34
+Gaza Strip	2015	15
+Georgia	2015	64
+Germany	2015	96
+Ghana	2015	84
+Greece	2015	83
+Grenada	2015	89
+Guatemala	2015	55
+Guinea	2015	41
+Guinea-Bissau	2015	40
+Guyana	2015	71
+Haiti	2015	41
+Honduras	2015	49
+Hong Kong	2015	65
+Hungary	2015	82
+Iceland	2015	99
+India	2015	78
+Indian Kashmir	2015	51
+Indonesia	2015	64
+Iran	2015	17
+Iraq	2015	24
+Ireland	2015	97
+Israel	2015	80
+Italy	2015	89
+Jamaica	2015	74
+Japan	2015	94
+Jordan	2015	36
+Kazakhstan	2015	24
+Kenya	2015	51
+Kiribati	2015	91
+Kosovo	2015	52
+Kuwait	2015	37
+Kyrgyzstan	2015	38
+Laos	2015	12
+Latvia	2015	85
+Lebanon	2015	44
+Lesotho	2015	71
+Liberia	2015	56
+Libya	2015	23
+Liechtenstein	2015	98
+Lithuania	2015	91
+Luxembourg	2015	98
+Madagascar	2015	52
+Malawi	2015	61
+Malaysia	2015	46
+Maldives	2015	48
+Mali	2015	44
+Malta	2015	97
+Marshall Islands	2015	91
+Mauritania	2015	31
+Mauritius	2015	90
+Mexico	2015	64
+Micronesia	2015	93
+Moldova	2015	63
+Monaco	2015	88
+Mongolia	2015	86
+Montenegro	2015	71
+Morocco	2015	42
+Mozambique	2015	58
+Myanmar	2015	25
+Nagorno-Karabakh	2015	30
+Namibia	2015	76
+Nauru	2015	88
+Nepal	2015	51
+Netherlands	2015	99
+New Zealand	2015	97
+Nicaragua	2015	54
+Niger	2015	56
+Nigeria	2015	43
+North Korea	2015	3
+North Macedonia	2015	60
+Northern Cyprus	2015	79
+Norway	2015	100
+Oman	2015	26
+Pakistan	2015	42
+Pakistani Kashmir	2015	29
+Palau	2015	92
+Panama	2015	82
+Papua New Guinea	2015	59
+Paraguay	2015	65
+Peru	2015	71
+Philippines	2015	63
+Poland	2015	93
+Portugal	2015	97
+Puerto Rico	2015	89
+Qatar	2015	28
+Romania	2015	83
+Russia	2015	23
+Rwanda	2015	25
+Samoa	2015	81
+San Marino	2015	100
+Sao Tome and Principe	2015	81
+Saudi Arabia	2015	10
+Senegal	2015	78
+Serbia	2015	80
+Seychelles	2015	67
+Sierra Leone	2015	65
+Singapore	2015	51
+Slovakia	2015	90
+Slovenia	2015	91
+Solomon Islands	2015	68
+Somalia	2015	2
+Somaliland	2015	46
+South Africa	2015	81
+South Korea	2015	84
+South Ossetia	2015	10
+South Sudan	2015	15
+Spain	2015	96
+Sri Lanka	2015	41
+St. Kitts and Nevis	2015	90
+St. Lucia	2015	92
+St. Vincent and the Grenadines	2015	90
+Sudan	2015	6
+Suriname	2015	77
+Sweden	2015	99
+Switzerland	2015	96
+Syria	2015	-1
+Taiwan	2015	88
+Tajikistan	2015	22
+Tanzania	2015	63
+Thailand	2015	33
+The Gambia	2015	20
+Tibet	2015	1
+Timor-Leste	2015	65
+Togo	2015	47
+Tonga	2015	75
+Transnistria	2015	24
+Trinidad and Tobago	2015	81
+Tunisia	2015	79
+Turkey	2015	55
+Turkmenistan	2015	6
+Tuvalu	2015	94
+Uganda	2015	36
+Ukraine	2015	62
+United Arab Emirates	2015	21
+United Kingdom	2015	97
+United States	2015	92
+Uruguay	2015	98
+Uzbekistan	2015	4
+Vanuatu	2015	79
+Venezuela	2015	35
+Vietnam	2015	20
+West Bank	2015	31
+Western Sahara	2015	5
+Yemen	2015	25
+Zambia	2015	60
+Zimbabwe	2015	28
+Abkhazia	2014	40
+Afghanistan	2014	26
+Albania	2014	67
+Algeria	2014	34
+Andorra	2014	96
+Angola	2014	29
+Antigua and Barbuda	2014	80
+Argentina	2014	80
+Armenia	2014	43
+Australia	2014	97
+Austria	2014	96
+Azerbaijan	2014	22
+Bahamas	2014	96
+Bahrain	2014	16
+Bangladesh	2014	53
+Barbados	2014	99
+Belarus	2014	14
+Belgium	2014	97
+Belize	2014	87
+Benin	2014	80
+Bhutan	2014	55
+Bolivia	2014	67
+Bosnia and Herzegovina	2014	61
+Botswana	2014	74
+Brazil	2014	81
+Brunei	2014	30
+Bulgaria	2014	78
+Burkina Faso	2014	53
+Burundi	2014	34
+Cabo Verde	2014	90
+Cambodia	2014	30
+Cameroon	2014	24
+Canada	2014	98
+Central African Republic	2014	6
+Chad	2014	21
+Chile	2014	95
+China	2014	17
+Colombia	2014	62
+Comoros	2014	55
+Congo (Brazzaville)	2014	30
+Congo (Kinshasa)	2014	20
+Costa Rica	2014	90
+Cote dIvoire	2014	45
+Croatia	2014	86
+Cuba	2014	12
+Cyprus	2014	92
+Czech Republic	2014	94
+Denmark	2014	98
+Djibouti	2014	29
+Dominica	2014	95
+Dominican Republic	2014	73
+Ecuador	2014	60
+Egypt	2014	31
+El Salvador	2014	77
+Equatorial Guinea	2014	8
+Eritrea	2014	3
+Estonia	2014	95
+Eswatini	2014	20
+Ethiopia	2014	18
+Fiji	2014	37
+Finland	2014	100
+France	2014	95
+Gabon	2014	34
+Gaza Strip	2014	15
+Georgia	2014	63
+Germany	2014	96
+Ghana	2014	84
+Greece	2014	83
+Grenada	2014	89
+Guatemala	2014	56
+Guinea	2014	41
+Guinea-Bissau	2014	32
+Guyana	2014	72
+Haiti	2014	43
+Honduras	2014	51
+Hong Kong	2014	67
+Hungary	2014	88
+Iceland	2014	100
+India	2014	77
+Indian Kashmir	2014	49
+Indonesia	2014	64
+Iran	2014	17
+Iraq	2014	25
+Ireland	2014	97
+Israel	2014	81
+Italy	2014	90
+Jamaica	2014	74
+Japan	2014	90
+Jordan	2014	35
+Kazakhstan	2014	25
+Kenya	2014	53
+Kiribati	2014	91
+Kosovo	2014	43
+Kuwait	2014	39
+Kyrgyzstan	2014	39
+Laos	2014	12
+Latvia	2014	84
+Lebanon	2014	48
+Lesotho	2014	72
+Liberia	2014	59
+Libya	2014	41
+Liechtenstein	2014	98
+Lithuania	2014	90
+Luxembourg	2014	99
+Madagascar	2014	43
+Malawi	2014	60
+Malaysia	2014	47
+Maldives	2014	48
+Mali	2014	44
+Malta	2014	97
+Marshall Islands	2014	91
+Mauritania	2014	34
+Mauritius	2014	90
+Mexico	2014	65
+Micronesia	2014	93
+Moldova	2014	64
+Monaco	2014	88
+Mongolia	2014	86
+Montenegro	2014	72
+Morocco	2014	42
+Mozambique	2014	58
+Myanmar	2014	26
+Nagorno-Karabakh	2014	31
+Namibia	2014	76
+Nauru	2014	92
+Nepal	2014	50
+Netherlands	2014	99
+New Zealand	2014	97
+Nicaragua	2014	54
+Niger	2014	56
+Nigeria	2014	46
+North Korea	2014	3
+North Macedonia	2014	64
+Northern Cyprus	2014	79
+Norway	2014	100
+Oman	2014	26
+Pakistan	2014	42
+Pakistani Kashmir	2014	29
+Palau	2014	92
+Panama	2014	82
+Papua New Guinea	2014	60
+Paraguay	2014	61
+Peru	2014	71
+Philippines	2014	63
+Poland	2014	93
+Portugal	2014	97
+Puerto Rico	2014	89
+Qatar	2014	28
+Romania	2014	84
+Russia	2014	26
+Rwanda	2014	26
+Samoa	2014	81
+San Marino	2014	100
+Sao Tome and Principe	2014	81
+Saudi Arabia	2014	10
+Senegal	2014	79
+Serbia	2014	78
+Seychelles	2014	67
+Sierra Leone	2014	67
+Singapore	2014	51
+Slovakia	2014	91
+Slovenia	2014	91
+Solomon Islands	2014	65
+Somalia	2014	2
+Somaliland	2014	46
+South Africa	2014	81
+South Korea	2014	85
+South Ossetia	2014	5
+South Sudan	2014	24
+Spain	2014	96
+Sri Lanka	2014	42
+St. Kitts and Nevis	2014	90
+St. Lucia	2014	92
+St. Vincent and the Grenadines	2014	89
+Sudan	2014	7
+Suriname	2014	77
+Sweden	2014	99
+Switzerland	2014	96
+Syria	2014	1
+Taiwan	2014	88
+Tajikistan	2014	24
+Tanzania	2014	64
+Thailand	2014	54
+The Gambia	2014	21
+Tibet	2014	1
+Timor-Leste	2014	63
+Togo	2014	47
+Tonga	2014	75
+Transnistria	2014	24
+Trinidad and Tobago	2014	81
+Tunisia	2014	63
+Turkey	2014	60
+Turkmenistan	2014	7
+Tuvalu	2014	94
+Uganda	2014	37
+Ukraine	2014	55
+United Arab Emirates	2014	21
+United Kingdom	2014	97
+United States	2014	92
+Uruguay	2014	98
+Uzbekistan	2014	4
+Vanuatu	2014	79
+Venezuela	2014	38
+Vietnam	2014	20
+West Bank	2014	31
+Western Sahara	2014	5
+Yemen	2014	26
+Zambia	2014	59
+Zimbabwe	2014	28
+Abkhazia	2013	40
+Afghanistan	2013	27
+Albania	2013	63
+Algeria	2013	35
+Andorra	2013	96
+Angola	2013	30
+Antigua and Barbuda	2013	80
+Argentina	2013	80
+Armenia	2013	42
+Australia	2013	97
+Austria	2013	96
+Azerbaijan	2013	23
+Bahamas	2013	96
+Bahrain	2013	18
+Bangladesh	2013	56
+Barbados	2013	99
+Belarus	2013	14
+Belgium	2013	97
+Belize	2013	88
+Benin	2013	82
+Bhutan	2013	46
+Bolivia	2013	69
+Bosnia and Herzegovina	2013	62
+Botswana	2013	74
+Brazil	2013	81
+Brunei	2013	30
+Bulgaria	2013	81
+Burkina Faso	2013	53
+Burundi	2013	34
+Cabo Verde	2013	90
+Cambodia	2013	29
+Cameroon	2013	23
+Canada	2013	98
+Central African Republic	2013	35
+Chad	2013	21
+Chile	2013	96
+China	2013	17
+Colombia	2013	61
+Comoros	2013	55
+Congo (Brazzaville)	2013	29
+Congo (Kinshasa)	2013	20
+Costa Rica	2013	91
+Cote dIvoire	2013	34
+Croatia	2013	86
+Cuba	2013	11
+Cyprus	2013	93
+Czech Republic	2013	95
+Denmark	2013	98
+Djibouti	2013	29
+Dominica	2013	95
+Dominican Republic	2013	75
+Ecuador	2013	60
+Egypt	2013	41
+El Salvador	2013	77
+Equatorial Guinea	2013	8
+Eritrea	2013	3
+Estonia	2013	95
+Eswatini	2013	21
+Ethiopia	2013	18
+Fiji	2013	37
+Finland	2013	100
+France	2013	95
+Gabon	2013	34
+Gaza Strip	2013	19
+Georgia	2013	60
+Germany	2013	96
+Ghana	2013	84
+Greece	2013	83
+Grenada	2013	89
+Guatemala	2013	57
+Guinea	2013	39
+Guinea-Bissau	2013	30
+Guyana	2013	71
+Haiti	2013	43
+Honduras	2013	51
+Hong Kong	2013	67
+Hungary	2013	88
+Iceland	2013	100
+India	2013	76
+Indian Kashmir	2013	49
+Indonesia	2013	65
+Iran	2013	16
+Iraq	2013	24
+Ireland	2013	97
+Israel	2013	81
+Italy	2013	88
+Jamaica	2013	73
+Japan	2013	88
+Jordan	2013	34
+Kazakhstan	2013	26
+Kenya	2013	55
+Kiribati	2013	91
+Kosovo	2013	42
+Kuwait	2013	41
+Kyrgyzstan	2013	39
+Laos	2013	11
+Latvia	2013	84
+Lebanon	2013	49
+Lesotho	2013	72
+Liberia	2013	60
+Libya	2013	43
+Liechtenstein	2013	98
+Lithuania	2013	90
+Luxembourg	2013	100
+Madagascar	2013	35
+Malawi	2013	60
+Malaysia	2013	48
+Maldives	2013	46
+Mali	2013	24
+Malta	2013	97
+Marshall Islands	2013	91
+Mauritania	2013	34
+Mauritius	2013	90
+Mexico	2013	65
+Micronesia	2013	93
+Moldova	2013	65
+Monaco	2013	87
+Mongolia	2013	86
+Montenegro	2013	72
+Morocco	2013	43
+Mozambique	2013	59
+Myanmar	2013	26
+Nagorno-Karabakh	2013	31
+Namibia	2013	76
+Nauru	2013	93
+Nepal	2013	47
+Netherlands	2013	99
+New Zealand	2013	97
+Nicaragua	2013	51
+Niger	2013	56
+Nigeria	2013	46
+North Korea	2013	3
+North Macedonia	2013	64
+Northern Cyprus	2013	78
+Norway	2013	100
+Oman	2013	26
+Pakistan	2013	42
+Pakistani Kashmir	2013	29
+Palau	2013	92
+Panama	2013	82
+Papua New Guinea	2013	59
+Paraguay	2013	62
+Peru	2013	71
+Philippines	2013	63
+Poland	2013	93
+Portugal	2013	97
+Puerto Rico	2013	89
+Qatar	2013	28
+Romania	2013	81
+Russia	2013	27
+Rwanda	2013	24
+Samoa	2013	81
+San Marino	2013	100
+Sao Tome and Principe	2013	81
+Saudi Arabia	2013	10
+Senegal	2013	75
+Serbia	2013	78
+Seychelles	2013	67
+Sierra Leone	2013	70
+Singapore	2013	52
+Slovakia	2013	92
+Slovenia	2013	91
+Solomon Islands	2013	65
+Somalia	2013	2
+Somaliland	2013	46
+South Africa	2013	81
+South Korea	2013	86
+South Ossetia	2013	5
+South Sudan	2013	31
+Spain	2013	96
+Sri Lanka	2013	43
+St. Kitts and Nevis	2013	91
+St. Lucia	2013	93
+St. Vincent and the Grenadines	2013	89
+Sudan	2013	7
+Suriname	2013	77
+Sweden	2013	100
+Switzerland	2013	96
+Syria	2013	5
+Taiwan	2013	88
+Tajikistan	2013	24
+Tanzania	2013	66
+Thailand	2013	53
+The Gambia	2013	23
+Tibet	2013	1
+Timor-Leste	2013	63
+Togo	2013	43
+Tonga	2013	73
+Transnistria	2013	25
+Trinidad and Tobago	2013	81
+Tunisia	2013	59
+Turkey	2013	61
+Turkmenistan	2013	7
+Tuvalu	2013	94
+Uganda	2013	40
+Ukraine	2013	57
+United Arab Emirates	2013	22
+United Kingdom	2013	97
+United States	2013	93
+Uruguay	2013	97
+Uzbekistan	2013	4
+Vanuatu	2013	79
+Venezuela	2013	39
+Vietnam	2013	19
+West Bank	2013	30
+Western Sahara	2013	5
+Yemen	2013	25
+Zambia	2013	62
+Zimbabwe	2013	25
