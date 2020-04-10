@@ -24,19 +24,20 @@ europe = subset(dt, (dt$countryterritoryCode %in% countries) | dt$countriesAndTe
 
 
 # Additional variables ------------------------------------------------------------------
-
 # rename, make date, select only variables of interest and order
 europe <- europe %>%
   mutate (country = countriesAndTerritories,
           iso3c = countryterritoryCode) %>%
   mutate (date = as.Date(dateRep, "%d/%m/%Y"),
-          date2 = as.numeric(date)) %>%
-  select (-dateRep, -day, -month, -year, -countryterritoryCode, -countriesAndTerritories) %>%
+          date2 = as.numeric(date),
+          pop = popData2018) %>%
+  select (-dateRep, -day, -month, -year, -countryterritoryCode, -countriesAndTerritories, -popData2018) %>%
   filter (date > '2020-01-15') %>%
   arrange (country, date)
 
 europe$iso3c = car::recode (europe$iso3c, "''='CZE'")
 europe$country = car::recode (europe$country, "'Czechia'='Czech_Republic'")
+europe$pop <- ifelse (europe$geoId == 'CZ' , 10650000, europe$pop)
 
 # fill-in the panel with NAs the missing rows          
 europe <-  panel_fill(europe,
@@ -76,18 +77,25 @@ europe <- europe %>%
 
 # add per capita varibles
 europe <- europe %>%
-  mutate (cases.pc = round (cases / popData2018 * 1e6, 0),
-          deaths.pc = round (deaths / popData2018 * 1e6, 0),
-          cum.cases.pc = round (cum.cases / popData2018 * 1e6, 0),
-          cum.deaths.pc = round (cum.deaths / popData2018 * 1e6, 0))
+  mutate (cases.pc = round (cases / pop * 1e6, 0),
+          deaths.pc = round (deaths / pop * 1e6, 0),
+          cum.cases.pc = round (cum.cases / pop * 1e6, 0),
+          cum.deaths.pc = round (cum.deaths / pop * 1e6, 0))
 
 # Add the policy data -----------------------------------------------------
 
 # read the file
-policy <- read.csv('./data/policy.csv', stringsAsFactors = FALSE)
+policy <- read.csv('./data/policy_09042020.csv', stringsAsFactors = FALSE)
+
 # rename some countries to match the other file
 policy$CountryName[policy$CountryName=='Czechia'] = 'Czech_Republic'         
 policy$CountryName[policy$CountryName=='United Kingdom'] = 'United_Kingdom'         
+policy$schools <- as.Date(policy$schools, format='%m/%d/%Y')
+policy$events <- as.Date(policy$events, format='%m/%d/%Y')
+policy$lockdown <- as.Date(policy$lockdown, format='%m/%d/%Y')
+policy$emerg <- as.Date(policy$emergency_powers, format='%m/%d/%Y')
+policy$emerg.state <- as.Date(policy$emergency_state, format='%m/%d/%Y')
+
 
 # merge
 europep<-merge (europe, policy, by.x='country', by.y = 'CountryName')
@@ -99,12 +107,17 @@ for ( i in 1:nrow(europep)){
   ifelse ((europep$schools[i] > europep$date[i] | is.na(europep$schools[i]) == TRUE), europep$school.d[i] <- 0, europep$school.d[i] <- 1)
   ifelse ((europep$events[i] > europep$date[i] | is.na(europep$events[i]) == TRUE), europep$events.d[i] <- 0, europep$events.d[i] <- 1)
   ifelse ((europep$lockdown[i] > europep$date[i] | is.na(europep$lockdown[i]) == TRUE), europep$lockdown.d[i] <- 0, europep$lockdown.d[i] <- 1)
+  ifelse ((europep$emerg[i] > europep$date[i] | is.na(europep$emerg[i]) == TRUE), europep$emerg.d[i] <- 0, europep$emerg.d[i] <- 1)
+  ifelse ((europep$emerg.state[i] > europep$date[i] | is.na(europep$emerg.state[i]) == TRUE), europep$emerg.state.d[i] <- 0, europep$emerg.state.d[i] <- 1)
+  
 }
 
 # create indicators for observations after the policy restriction events
 europep$remove.school<-FALSE
 europep$remove.events<-FALSE
 europep$remove.lockdown<-FALSE
+europep$remove.emerg<-FALSE
+europep$remove.emerg.state<-FALSE
 
 for (i in 2:nrow(europep)){
   if ((europep$country[i] == europep$country[i-1]) & europep$school.d[i-1] == 1)
@@ -127,6 +140,19 @@ for (i in 2:nrow(europep)){
     next
 }
 
+for (i in 2:nrow(europep)){
+  if ((europep$country[i] == europep$country[i-1]) & europep$emerg.d[i-1] == 1)
+    europep$remove.emerg[i] = TRUE
+  else
+    next
+}
+
+for (i in 2:nrow(europep)){
+  if ((europep$country[i] == europep$country[i-1]) & europep$emerg.state.d[i-1] == 1)
+    europep$remove.emerg.state[i] = TRUE
+  else
+    next
+}
 
 # Add World Bank data -----------------------------------------------------
 # download the Government Effectiveness indicators
@@ -174,9 +200,9 @@ govs<-read_csv('./data/Corona policy sudy - Sheet1.csv')
 europep<-left_join (europep, govs, by='country')
 
 # Save full data files ---------------------------------------------------------
-save(europep, file = './output data/europep08042020.RData')
+save(europep, file = './output data/europep09042020.RData')
 
-write.csv(europep, file = './output data/europep08042020.csv')
+write.csv(europep, file = './output data/europep09042020.csv')
 
 # Subset for TVC analysis and save--------------------------------
 # subset the data so that countries exit the data once the restrictions are enacted
@@ -186,9 +212,15 @@ tvc.e <- europep[europep$remove.events==FALSE, ] #events
 
 tvc.l <- europep[europep$remove.lockdown==FALSE, ] #lockdown
 
-write.csv(tvc.s, file = './output data/tvc_s_08042020.csv')
-write.csv(tvc.e, file = './output data/tvc_e_08042020.csv')
-write.csv(tvc.l, file = './output data/tvc_l_08042020.csv')
+tvc.em <- europep[europep$remove.emerg==FALSE, ] #lockdown
+
+tvc.ems <- europep[europep$remove.emerg.state==FALSE, ] #lockdown
+
+write.csv(tvc.s, file = './output data/tvc_s_09042020.csv')
+write.csv(tvc.e, file = './output data/tvc_e_09042020.csv')
+write.csv(tvc.l, file = './output data/tvc_l_09042020.csv')
+write.csv(tvc.em, file = './output data/tvc_em_09042020.csv')
+write.csv(tvc.ems, file = './output data/tvc_ems_09042020.csv')
 
 # Subset for OLS analysis and save--------------------------------
 # subset the data to the dates on which restrictions occured and the last they if they did not
@@ -200,9 +232,16 @@ ols.e <- europep [(europep$events.d == 1 & europep$remove.events == FALSE) |
                     (is.na(europep$events) & europep$date == max (europep$date)),]
 ols.l <- europep [(europep$lockdown.d == 1 & europep$remove.lockdown == FALSE) |
                     (is.na(europep$lockdown) & europep$date == max (europep$date)),]
-write.csv(ols.s, file = './output data/ols_s_08042020.csv')
-write.csv(ols.e, file = './output data/ols_e_08042020.csv')
-write.csv(ols.l, file = './output data/ols_l_08042020.csv')
+ols.em <- europep [(europep$emerg.d == 1 & europep$remove.emerg == FALSE) |
+                    (is.na(europep$emerg) & europep$date == max (europep$date)),]
+ols.ems <- europep [(europep$emerg.state.d == 1 & europep$remove.emerg.state == FALSE) |
+                     (is.na(europep$emerg.state) & europep$date == max (europep$date)),]
+
+write.csv(ols.s, file = './output data/ols_s_09042020.csv')
+write.csv(ols.e, file = './output data/ols_e_09042020.csv')
+write.csv(ols.l, file = './output data/ols_l_09042020.csv')
+write.csv(ols.em, file = './output data/ols_em_09042020.csv')
+write.csv(ols.ems, file = './output data/ols_ems_09042020.csv')
 
 # Subset for survival analysis and save--------------------------------
 # subset the data to the dates on which restrictions occured and the last they if they did not
@@ -245,25 +284,61 @@ surv.l <- europep %>%
           growth.cases.daily = cum.cases / as.numeric(duration),
           censored = ifelse (is.na(lockdown),1,0))
 
+
+surv.em <- europep %>% 
+  group_by(country) %>% 
+  filter(date == emerg | date == tail(date,1)) %>% 
+  group_by(country) %>%
+  filter (row_number() == 1) %>%
+  mutate (duration = as.numeric(date - first.case.date),
+          growth.cases.daily = cum.cases / as.numeric(duration),
+          censored = ifelse (is.na(lockdown),1,0))
+
+surv.ems <- europep %>% 
+  group_by(country) %>% 
+  filter(date == emerg.state | date == tail(date,1)) %>% 
+  group_by(country) %>%
+  filter (row_number() == 1) %>%
+  mutate (duration = as.numeric(date - first.case.date),
+          growth.cases.daily = cum.cases / as.numeric(duration),
+          censored = ifelse (is.na(lockdown),1,0))
+
+library(survival)
+surv.s$surv<-Surv(surv.s$duration, surv.s$censored==0)  
+surv.e$surv<-Surv(surv.e$duration, surv.e$censored==0)  
+surv.l$surv<-Surv(surv.l$duration, surv.l$censored==0)  
+surv.em$surv<-Surv(surv.em$duration, surv.l$censored==0)  
+surv.ems$surv<-Surv(surv.ems$duration, surv.l$censored==0)  
+
+plot(survfit(surv ~ federalism, data = surv.l, conf.int=TRUE), lwd=3, lty=c(1,2), col=c("red", "blue"), axes=T,
+     xlab="Years after public opinion poll", cex.lab=1.5)
+
+summary(coxph(surv ~ growth.cases.daily, data = surv.l))
+
 # to check
 #data.frame(surv.l[, c('country','date', 'cum.cases', 'first.case.date', 'duration', 'growth.cases.daily', 'censored')]) 
 
-write.csv(surv.s, file = './output data/surv_s_08042020.csv')
-write.csv(surv.e, file = './output data/surv_e_08042020.csv')
-write.csv(surv.l, file = './output data/surv_l_08042020.csv')
+write.csv(surv.s, file = './output data/surv_s_09042020.csv')
+write.csv(surv.e, file = './output data/surv_e_09042020.csv')
+write.csv(surv.l, file = './output data/surv_l_09042020.csv')
+write.csv(surv.em, file = './output data/surv_l_09042020.csv')
+write.csv(surv.ems, file = './output data/surv_l_09042020.csv')
 
 
 # Plot of restriction date per number of cases ----------------------------
-plot (NULL, xlim = c(as.Date("2020-03-01"), as.Date("2020-03-27")), ylim=c(0,log(15000) ))
+# schools
+plot (NULL, xlim = c(as.Date("2020-03-01"), as.Date("2020-03-20")), ylim=c(0,log(25000) ))
 
-points (x = ds2$date, y = log(ds2$cum.cases), cex=0.1)
-text (ds2$iso3c, x = ds2$date, y = log(ds2$cum.cases+1), cex=0.75)
+points (x = ols.s$date, y = log(ols.s$cum.cases), cex=0.1)
+text (ols.s$iso3c, x = ols.s$date, y = log(ols.s$cum.cases), cex=0.75)
 
 
-plot (NULL, xlim = c(as.Date("2020-03-10"), as.Date("2020-03-30")), ylim=c(0,log(25000) ))
+# lockdowns
+plot (NULL, xlim = c(as.Date("2020-03-01"), as.Date("2020-04-10")), ylim=c(0,log(25000) ))
 
-points (x = dl2$date, y = log(dl2$cum.cases), cex=0.1)
-text (dl2$iso3c, x = dl2$date, y = log(dl2$cum.cases), cex=0.75)
+points (x = ols.l$date, y = log(ols.l$cum.cases), cex=0.1)
+text (ols.l$iso3c, x = ols.l$date, y = log(ols.l$cum.cases), cex=0.75)
+
 
 # Plot of policy by number of cases and deaths --------------------------
 par (mfrow=c(1,2),
