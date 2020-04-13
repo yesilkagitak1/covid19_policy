@@ -1,0 +1,640 @@
+---
+title: "Data analysis of policy resposes to COVID-19 in Europe"
+author: 
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+
+output: 
+  html_document:
+    theme: default
+    self_contained: yes
+    toc: yes
+    toc_float: true
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(fig.retina = 3, warning = FALSE, message = FALSE, fig.path='./figs')
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<style type="text/css">
+div.main-container {
+  max-width: 1680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+code{
+  font-size: 16px;
+}
+
+code.r{
+  font-size: 14px;
+}
+
+pre {
+  font-size: 14px
+}
+
+</style>
+# Preliminaries
+## Packages and functions
+```{r eval=TRUE, collapse=TRUE}
+library(utils)
+library(httr)
+library(tidyverse)
+library(pmdplyr)
+library(wbstats)
+library(haven)
+library(countrycode)
+library(car)
+library(survival)
+```
+
+## Graphical settings
+```{r eval=TRUE, collapse = TRUE}
+library(emojifont) # to insert logos and emojis
+library(extrafont) # to embed extra fonts
+library(sysfonts) # to check available fonts and download fonts from google
+library(showtext) # to use the extra fonts
+
+### Common graphics settings
+## add custom fonts
+font_add_google('Quattrocento') #get the fonts 
+font_add_google('Quattrocento Sans')
+font_families() #check that the fonts are installed and available
+
+showtext_auto() #this is to turn on the custom fonts availability
+showtext_opts(dpi = 96) #set the resolution: 96 is default
+
+## color settings
+background.color = rgb(248, 244, 255, max=255) # color for the background: magnolia
+
+dark.color = rgb(24, 24, 38, max=255) # dark color: almost black
+
+red.1 = rgb(237, 41, 57, max=255) # default red
+blue.1 = rgb(0,24,168, max=255) # default blue
+green.1 = rgb(0, 173, 67, max=255) # default green
+green.dark = rgb(0, 66, 26, max=255) # dark green
+green.light = rgb(15, 255, 108, max=255) # light green
+
+blue.twitter = rgb (29, 161, 242, max=255) # twitter blue
+
+s = 3
+
+offset = 0.01
+mtext.title = 2*s
+mtext.subtitle = 1.4*s
+```
+
+## Data import 
+Load the data in two formats: with number of cases at date of policy as a variable (ols) and with duration from first case until policy as a variable (surv).
+```{r eval=TRUE, collapse = TRUE}
+load(file = './output data/ols_s2_09042020.RData')
+load(file = './output data/ols_e2_09042020.RData')
+load(file = './output data/ols_l2_09042020.RData')
+load(file = './output data/ols_em2_09042020.RData')
+load(file = './output data/ols_ems2_09042020.RData')
+
+load(file = './output data/surv_s_09042020.RData')
+load(file = './output data/surv_e_09042020.RData')
+load(file = './output data/surv_l_09042020.RData')
+load(file = './output data/surv_em_09042020.RData')
+load(file = './output data/surv_ems_09042020.RData')
+```
+
+# Describing the outcome variables of interest
+This part of the analysis explores the distribution of the outcome variables of interest with graphical methods.
+
+```{r eval=TRUE, collapse=TRUE, fig.dim = c(12, 9)}
+
+y.max1 <- 9
+y.max2 <- 10
+
+png ('./figures/FD1_dates_and_cases.png', width=1280*s, height=905.5*s, res=96)
+# schools
+par(mfrow=c(2,1), # number and distribution of plots
+    oma=c(0,0,4,0), # size of the outer margins in lines of text (can be specified in inches as well with `omi`)
+    mar=c(3,4,1,1), # number of lines of margin to be specified on the four sides of the plot (can be specified in inches as well with `mai`) 
+    bty='n', # no box
+    cex = 1.25*s, # magnification of text and symbols
+    xpd = FALSE, # clipping of plotting to the figure region
+    ann = FALSE, # switch off titles,
+    bg=background.color, # background color
+    family='Quattrocento' # font family
+)
+
+plot (NULL, xlim = c(as.Date("2020-03-01"), as.Date("2020-04-01")), ylim=c(0, y.max1 ), yaxt = 'n', xaxt = 'n')
+
+title (ylab = 'Number of confirmed cases', line = 3, cex.lab = 0.9, font.lab=3)
+
+axis (1, 
+      line = 0, # position
+      tck = -0.01,
+      lwd = 1*s,
+      col = dark.color, # the actual axis (line) 
+      col.axis = dark.color, # colors of the actual labels
+      cex.axis = 0.7,
+      font=2, # font type (bold)
+      at=c(seq((as.Date('2020-03-01')), (as.Date('2020-04-01')),7), as.Date('2020-04-01')), # where to put labels  
+      labels= c ('1\nMarch', '8\nMarch', '15\nMarch', '22\nMarch', '29\nMarch', 'Not\nadopted'), # text of labels 
+      las=1 # orientation of the labels
+)
+
+axis (2, 
+      line = 0, # position
+      tck = -0.01,
+      lwd = 1*s,
+      col = dark.color, # the actual axis (line) 
+      col.axis = dark.color, # colors of the actual labels
+      cex.axis = 0.8, 
+      font=2, # font type (bold)
+      at=c(log(1), log(10), log(100), log(1000), log(10000)), # where to put labels  
+      labels=c(0, 10,100,1000,10000), # text of labels 
+      las=1 # orientation of the labels
+)
+
+abline(h = c(log(1), log(10), log(100), log(1000), log(10000)), col='white', lwd=2*s)
+abline(v = as.numeric(c(seq((as.Date('2020-03-01')), (as.Date('2020-04-01')),7), as.Date('2020-04-01'))), col='white', lwd=2*s)
+
+points (x = ols.s2$date, y = log(ols.s2$cum.cases), cex=0.1, pch = 16, col = red.1)
+text (ols.s2$iso3c, x = ols.s2$date, y = log(ols.s2$cum.cases), col= red.1, cex=0.75)
+
+# lockdowns
+plot (NULL, xlim = c(as.Date("2020-03-01"), as.Date("2020-04-01")), ylim=c(0, y.max2), yaxt = 'n', xaxt = 'n')
+
+title (ylab = 'Number of confirmed cases', line = 3, cex.lab = 0.9, font.lab=3)
+
+axis (1, 
+      line = 0, # position
+      tck = -0.01,
+      lwd = 1*s,
+      col = dark.color, # the actual axis (line) 
+      col.axis = dark.color, # colors of the actual labels
+      cex.axis = 0.7,
+      font=2, # font type (bold)
+      at=c(seq((as.Date('2020-03-01')), (as.Date('2020-04-01')),7), as.Date('2020-04-01')), # where to put labels  
+      labels= c ('1\nMarch', '8\nMarch', '15\nMarch', '22\nMarch', '29\nMarch', 'Not\nadopted'), # text of labels 
+      las=1 # orientation of the labels
+)
+
+axis (2, 
+      line = 0, # position
+      tck = -0.01,
+      lwd = 1*s,
+      col = dark.color, # the actual axis (line) 
+      col.axis = dark.color, # colors of the actual labels
+      cex.axis = 0.8, 
+      font=2, # font type (bold)
+      at=c(log(1), log(10), log(100), log(1000), log(10000)), # where to put labels  
+      labels= c(0, 10,100,1000,10000), # text of labels 
+      las=1 # orientation of the labels
+)
+
+abline(h = c(log(1), log(10), log(100), log(1000), log(10000)), col='white', lwd=2*s)
+abline(v = as.numeric(c(seq((as.Date('2020-03-01')), (as.Date('2020-04-01')),7), as.Date('2020-04-01'))), col='white', lwd=2*s)
+
+points (x = ols.l2$date, y = log(ols.l2$cum.cases), cex=0.1, pch = 16, col = red.1)
+text (ols.l2$iso3c, x = ols.l2$date, y = log(ols.l2$cum.cases), col= red.1, cex=0.75)
+
+#title
+mtext(expression(bold('Cumulative number of COVID-19 cases and timing of policy restrictions in Europe')),
+      side = 3, line = 3, adj = 0, padj = 1, outer = TRUE, at = offset,
+      font=1, col=dark.color, cex = mtext.title)
+
+mtext(expression('Top panel shows dates of announcing school closures. Bottom panel shows dates of announcing national lockdowns.'),
+      side = 3, line = 1, adj = 0, padj = 1, outer = TRUE, at = offset,
+      font=1, col=dark.color, cex = mtext.subtitle)
+
+dev.off()
+
+```
+![](./figures/FD1_dates_and_cases.png)
+
+
+```{r eval=TRUE, collapse=TRUE, fig.dim = c(12, 9)}
+x.max1 <- 10
+y.max1 <- 7
+
+png ('./figures/FD1_dates_deaths_and_cases.png', width=1280*s, height=905.5*s, res=96)
+
+par(mfrow=c(2,1), # number and distribution of plots
+    oma=c(0,0,4,0), # size of the outer margins in lines of text (can be specified in inches as well with `omi`)
+    mar=c(3,4,1,1), # number of lines of margin to be specified on the four sides of the plot (can be specified in inches as well with `mai`) 
+    bty='n', # no box
+    cex = 1.25*s, # magnification of text and symbols
+    xpd = FALSE, # clipping of plotting to the figure region
+    ann = FALSE, # switch off titles,
+    bg=background.color, # background color
+    family='Quattrocento' # font family
+    
+)
+#  schools
+plot (NULL, xlim = c(log(10), x.max1), ylim=c(0, y.max1), yaxt = 'n', xaxt = 'n')
+
+title (xlab = 'Number of confirmed COVID-19 cases', line = 2, cex.lab = 0.9, font.lab=3)
+title (ylab = 'Number of confirmed COVID-19 deaths', line = 3, cex.lab = 0.9, font.lab=3)
+
+
+axis (1, 
+      line = 0, # position
+      tck = -0.01,
+      lwd = 1*s,
+      col = dark.color, # the actual axis (line) 
+      col.axis = dark.color, # colors of the actual labels
+      cex.axis = 0.7,
+      font=2, # font type (bold)
+      at=c(log(1), log(10), log(100), log(1000), log(10000), log(20000)), # where to put labels  
+      labels= c(0, 10,100,1000,10000, 20000), # text of labels 
+      las=1 # orientation of the labels
+)
+
+axis (2, 
+      line = 0, # position
+      tck = -0.01,
+      lwd = 1*s,
+      col = dark.color, # the actual axis (line) 
+      col.axis = dark.color, # colors of the actual labels
+      cex.axis = 0.8, 
+      font=2, # font type (bold)
+      at=c(log(1), log(10), log(100), log(1000)), # where to put labels  
+      labels= c(0, 10,100,1000), # text of labels 
+      las=1 # orientation of the labels
+)
+
+abline(v = c(log(1), log(10), log(100), log(1000), log(10000)), col='white', lwd=2*s)
+abline(h = c(log(1), log(10), log(100), log(1000)), col='white', lwd=2*s)
+
+
+points (x = log(ols.s2$cum.cases), y = log(ols.s2$cum.deaths+1), cex=0.1, pch = 16, col = red.1)
+text (ols.s2$iso3c[ols.s2$date!='2020-04-01'], x = log(ols.s2$cum.cases[ols.s2$date!='2020-04-01']), y = log(ols.s2$cum.deaths[ols.s2$date!='2020-04-01']+1), col= red.1, cex=0.75)
+
+text (ols.s2$iso3c[ols.s2$date=='2020-04-01'], x = log(ols.s2$cum.cases[ols.s2$date=='2020-04-01']), y = log(ols.s2$cum.deaths[ols.s2$date=='2020-04-01']+1), col= blue.1, cex=0.75)
+
+
+# lockdowns
+plot (NULL, xlim = c(log(10), x.max1), ylim=c(0, y.max1), yaxt = 'n', xaxt = 'n')
+title (xlab = 'Number of confirmed COVID-19 cases', line = 2, cex.lab = 0.9, font.lab=3)
+title (ylab = 'Number of confirmed COVID-19 deaths', line = 3, cex.lab = 0.9, font.lab=3)
+
+axis (1, 
+      line = 0, # position
+      tck = -0.01,
+      lwd = 1*s,
+      col = dark.color, # the actual axis (line) 
+      col.axis = dark.color, # colors of the actual labels
+      cex.axis = 0.7,
+      font=2, # font type (bold)
+      at=c(log(1), log(10), log(100), log(1000), log(10000), log(20000)), # where to put labels  
+      labels= c(0, 10,100,1000,10000, 20000), # text of labels 
+      las=1 # orientation of the labels
+)
+
+axis (2, 
+      line = 0, # position
+      tck = -0.01,
+      lwd = 1*s,
+      col = dark.color, # the actual axis (line) 
+      col.axis = dark.color, # colors of the actual labels
+      cex.axis = 0.8, 
+      font=2, # font type (bold)
+      at=c(log(1), log(10), log(100), log(1000)), # where to put labels  
+      labels= c(0, 10,100,1000), # text of labels 
+      las=1 # orientation of the labels
+)
+
+abline(v = c(log(1), log(10), log(100), log(1000), log(10000)), col='white', lwd=2*s)
+abline(h = c(log(1), log(10), log(100), log(1000)), col='white', lwd=2*s)
+
+
+points (x = log(ols.l2$cum.cases), y = log(ols.l2$cum.deaths+1), cex=0.1, pch = 16, col = red.1)
+text (ols.l2$iso3c[ols.l2$date!='2020-04-01'], x = log(ols.l2$cum.cases[ols.l2$date!='2020-04-01']), y = log(ols.l2$cum.deaths[ols.l2$date!='2020-04-01']+1), col= red.1, cex=0.75)
+
+text (ols.l2$iso3c[ols.l2$date=='2020-04-01'], x = log(ols.l2$cum.cases[ols.l2$date=='2020-04-01']), y = log(ols.l2$cum.deaths[ols.l2$date=='2020-04-01']+1), col= blue.1, cex=0.75)
+
+#title
+mtext(expression(bold('Cumulative number of COVID-19 cases, deaths and timing of policy restrictions')),
+      side = 3, line = 3, adj = 0, padj = 1, outer = TRUE, at = offset,
+      font=1, col=dark.color, cex = mtext.title)
+
+mtext(expression('Labels show when a school closure (top) or a lockdown (bottom) were imposed (red) or, if not, the situation as of 1 April (blue)'),
+      side = 3, line = 1, adj = 0, padj = 1, outer = TRUE, at = offset,
+      font=1, col=dark.color, cex = mtext.subtitle)
+
+dev.off()
+
+```
+![](./figures/FD1_dates_deaths_and_cases.png)
+
+
+```{r eval=TRUE, collapse=TRUE, fig.dim = c(12, 9)}
+x.max1 <- 61
+y.max1 <- 61
+
+png ('./figures/FD1_duration_deaths_and_cases.png', width=1280*s, height=905.5*s, res=96)
+
+par(mfrow=c(1,1), # number and distribution of plots
+    oma=c(0,0,4,0), # size of the outer margins in lines of text (can be specified in inches as well with `omi`)
+    mar=c(3,4,1,1), # number of lines of margin to be specified on the four sides of the plot (can be specified in inches as well with `mai`) 
+    bty='n', # no box
+    cex = 1.25*s, # magnification of text and symbols
+    xpd = FALSE, # clipping of plotting to the figure region
+    ann = FALSE, # switch off titles,
+    bg=background.color, # background color
+    family='Quattrocento' # font family
+    
+)
+#  schools
+plot (NULL, xlim = c(0, x.max1), ylim=c(0, y.max1), yaxt = 'n', xaxt = 'n')
+
+title (xlab = 'Days from first confirmed COVID-19 case till school closure', line = 2, cex.lab = 1, font.lab=3)
+title (ylab = 'Days from first confirmed COVID-19 case till national lockdown', line = 3, cex.lab = 1, font.lab=3)
+
+axis (1, 
+      line = 0, # position
+      tck = -0.01,
+      lwd = 1*s,
+      col = dark.color, # the actual axis (line) 
+      col.axis = dark.color, # colors of the actual labels
+      cex.axis = 0.9,
+      font=2, # font type (bold)
+      at=seq(0,60,10), # where to put labels  
+      labels= seq(0,60,10), # text of labels 
+      las=1 # orientation of the labels
+)
+
+axis (2, 
+      line = 0, # position
+      tck = -0.01,
+      lwd = 1*s,
+      col = dark.color, # the actual axis (line) 
+      col.axis = dark.color, # colors of the actual labels
+      cex.axis = 0.9, 
+      font=2, # font type (bold)
+      at=seq(0,60,10), # where to put labels  
+      labels= seq(0,60,10), # text of labels 
+      las=1 # orientation of the labels
+)
+
+abline(v = seq(0,60,10), col='white', lwd=2*s)
+abline(h = seq(0,60,10), col='white', lwd=2*s)
+
+
+points (x = surv.s$duration, y = surv.l$duration, cex=0.1, pch = 16, col = red.1)
+text (surv.s$iso3c, x = surv.s$duration, y = surv.l$duration, col= red.1, cex=0.75)
+text (surv.s$iso3c[surv.s$date=='2020-04-01' | surv.l$date=='2020-04-01'], 
+      x = surv.s$duration[surv.s$date=='2020-04-01' | surv.l$date=='2020-04-01'], 
+      y = surv.l$duration[surv.s$date=='2020-04-01' | surv.l$date=='2020-04-01'], 
+      col= blue.1, cex=0.75)
+text (surv.s$iso3c[surv.s$date=='2020-04-01' & surv.l$date=='2020-04-01'], 
+      x = surv.s$duration[surv.s$date=='2020-04-01' & surv.l$date=='2020-04-01'], 
+      y = surv.l$duration[surv.s$date=='2020-04-01' & surv.l$date=='2020-04-01'], 
+      col= green.1, cex=0.75)
+
+#title
+mtext(expression(bold('Time until policy restrictions since first confirmed COVID-19 cases')),
+      side = 3, line = 3, adj = 0, padj = 1, outer = TRUE, at = offset,
+      font=1, col=dark.color, cex = mtext.title)
+
+mtext(expression('Number of days until school closure (x-axis) and national lockdown (y-axis) [blue/green labels: censored as of 1 April 2020]'),
+      side = 3, line = 1, adj = 0, padj = 1, outer = TRUE, at = offset,
+      font=1, col=dark.color, cex = mtext.subtitle)
+
+dev.off()
+```
+![](./figures/FD1_duration_deaths_and_cases.png)
+
+# Bivariate analyses
+This part of the analysis will explore the bivariate relationships between the outcome variables of interest and possible predictors.
+The first set of models focuses on the adoption of school closures, the second on national lockdowns, and the third on emergency powers (broader than state of emergency). For each relationship, two models are estimated: one OLS of the log of the number of confirmed cases at date of policy announcement (so positive means more cases and slower government reaction) and one survival model of the duration between the first confrimed cases and the policy announcement (the coefficient estimates are for the hazard of adoption so that negative means lower hazard of adoption).
+
+## Analysis of school closures
+### Government efficiency 
+```{r eval=TRUE, collapse=TRUE}
+### all the WB Governement Effectiveness and Freedom House variables are very highly correlated 
+round(cor (ols.s2 [, c('cum.cases', 'GE.EST','RL.EST','RQ.EST','CC.EST','PV.EST','free')]),2)
+
+# Government effectiveness proper: both models show significant associations
+summary(lm(log(cum.cases) ~ GE.EST + pop, data = ols.s2))
+summary(coxph(surv ~ GE.EST + pop, data = surv.s))
+
+# political violence: strange than no association, given largest bivariate corelation, but the logging does it
+summary(lm(log(cum.cases) ~ PV.EST + pop, data = ols.s2))
+summary(coxph(surv ~ PV.EST + pop, data = surv.s))
+```
+
+### Freedom and democracy
+```{r eval=TRUE, collapse=TRUE}
+# freedom index has very and significant association
+summary(lm(log(cum.cases) ~ free + pop, data = ols.s2))
+summary(coxph(surv ~ free + pop, data = surv.s))
+```
+### Experts access to policy making
+```{r eval=TRUE, collapse=TRUE}
+# SGI expert score: strong associations in the 'wrong' direction
+summary(lm(log(cum.cases) ~ sgi_experts + pop, data = ols.s2))
+summary(coxph(surv ~ sgi_experts + pop, data = surv.s))
+```
+
+### Party preferences
+```{r eval=TRUE, collapse=TRUE}
+# Party positions: general left-right: no effects
+summary(lm(log(cum.cases) ~ pm_party_lr + pop, data = ols.s2))
+summary(coxph(surv ~ pm_party_lr + pop, data = surv.s))
+
+# Party positions: economic left-right: no effects
+summary(lm(log(cum.cases) ~ pm_party_lr_econ + pop, data = ols.s2))
+summary(coxph(surv ~ pm_party_lr_econ + pop, data = surv.s))
+
+# Party positions: GAL/TAN: some evidence that TAN are faster (OLS model)
+summary(lm(log(cum.cases) ~ pm_party_galtan + pop, data = ols.s2))
+summary(coxph(surv ~ pm_party_galtan + pop, data = surv.s))
+```
+
+### Organizational characteristics
+```{r eval=TRUE, collapse=TRUE}
+# Type of ministry: some evidence for effects, but not sure how to interpret
+summary(lm(log(cum.cases) ~ hm_min_type + pop, data = ols.s2))
+summary(coxph(surv ~ hm_min_type + pop, data = surv.s))
+
+# Health minister a medic: some evidence for an effect (OLS model)
+summary(lm(log(cum.cases) ~ hm_medic + pop, data = ols.s2))
+summary(coxph(surv ~ hm_medic + pop, data = surv.s))
+
+```
+### Government type
+```{r eval=TRUE, collapse=TRUE}
+# Number of parties in government: no association
+summary(lm(log(cum.cases) ~ n_parties + pop, data = ols.s2))
+summary(coxph(surv ~ n_parties + pop, data = surv.s))
+
+# Minority government: no association
+summary(lm(log(cum.cases) ~ minority + pop, data = ols.s2))
+summary(coxph(surv ~ minority + pop, data = surv.s))
+
+# Caretaker government: neither
+summary(lm(log(cum.cases) ~ caretaker + pop, data = ols.s2))
+summary(coxph(surv ~ caretaker + pop, data = surv.s))
+```
+### Institutional contraints
+```{r eval=TRUE, collapse=TRUE}
+# Federalism: not quite significant
+summary(lm(log(cum.cases) ~ federalism + pop, data = ols.s2))
+summary(coxph(surv ~ federalism + pop, data = surv.s))
+
+# Regionalism: significant in the OLS model
+summary(lm(log(cum.cases) ~ rai + pop, data = ols.s2))
+summary(coxph(surv ~ rai + pop, data = surv.s))
+```
+
+
+## Analysis of national lockdowns
+### Government efficiency 
+```{r eval=TRUE, collapse=TRUE}
+### all the WB Governement Effectiveness and Freedom House variables are very highly correlated 
+round(cor (ols.l2 [, c('cum.cases', 'GE.EST','RL.EST','RQ.EST','CC.EST','PV.EST','free')]),2)
+
+# Government effectiveness proper: both models show significant associations
+summary(lm(log(cum.cases) ~ GE.EST + pop, data = ols.l2))
+summary(coxph(surv ~ GE.EST + pop, data = surv.l))
+
+```
+
+### Freedom and democracy
+```{r eval=TRUE, collapse=TRUE}
+# freedom index has very and significant association
+summary(lm(log(cum.cases) ~ free + pop, data = ols.l2))
+summary(coxph(surv ~ free + pop, data = surv.l))
+```
+### Experts access to policy making
+```{r eval=TRUE, collapse=TRUE}
+# SGI expert score: strong associations in the 'wrong' direction
+summary(lm(log(cum.cases) ~ sgi_experts + pop, data = ols.l2))
+summary(coxph(surv ~ sgi_experts + pop, data = surv.l))
+```
+
+### Party preferences
+```{r eval=TRUE, collapse=TRUE}
+# Party positions: general left-right: some evidence
+summary(lm(log(cum.cases) ~ pm_party_lr + pop, data = ols.l2))
+summary(coxph(surv ~ pm_party_lr + pop, data = surv.l))
+
+# Party positions: economic left-right: no effects
+summary(lm(log(cum.cases) ~ pm_party_lr_econ + pop, data = ols.l2))
+summary(coxph(surv ~ pm_party_lr_econ + pop, data = surv.l))
+
+# Party positions: GAL/TAN: strong evidence that TAN are faster (OLS model)
+summary(lm(log(cum.cases) ~ pm_party_galtan + pop, data = ols.l2))
+summary(coxph(surv ~ pm_party_galtan + pop, data = surv.l))
+```
+
+### Organizational characteristics
+```{r eval=TRUE, collapse=TRUE}
+# Type of ministry: no evidence for effects
+summary(lm(log(cum.cases) ~ hm_min_type + pop, data = ols.l2))
+summary(coxph(surv ~ hm_min_type + pop, data = surv.l))
+
+# Health minister a medic: some evidence for an effect (OLS model)
+summary(lm(log(cum.cases) ~ hm_medic + pop, data = ols.l2))
+summary(coxph(surv ~ hm_medic + pop, data = surv.l))
+
+```
+### Government type
+```{r eval=TRUE, collapse=TRUE}
+# Number of parties in government: no association
+summary(lm(log(cum.cases) ~ n_parties + pop, data = ols.l2))
+summary(coxph(surv ~ n_parties + pop, data = surv.l))
+
+# Minority government: no association
+summary(lm(log(cum.cases) ~ minority + pop, data = ols.l2))
+summary(coxph(surv ~ minority + pop, data = surv.l))
+
+# Caretaker government: neither
+summary(lm(log(cum.cases) ~ caretaker + pop, data = ols.l2))
+summary(coxph(surv ~ caretaker + pop, data = surv.l))
+```
+### Institutional contraints
+```{r eval=TRUE, collapse=TRUE}
+# Federalism: significant
+summary(lm(log(cum.cases) ~ federalism + pop, data = ols.l2))
+summary(coxph(surv ~ federalism + pop, data = surv.l))
+
+# Regionalism: significant in the OLS model
+summary(lm(log(cum.cases) ~ rai + pop, data = ols.l2))
+summary(coxph(surv ~ rai + pop, data = surv.l))
+```
+
+## Analysis of emergency powers
+### Government efficiency 
+```{r eval=TRUE, collapse=TRUE}
+### all the WB Governement Effectiveness and Freedom House variables are very highly correlated 
+round(cor (ols.em2 [, c('cum.cases', 'GE.EST','RL.EST','RQ.EST','CC.EST','PV.EST','free')]),2)
+
+# Government effectiveness proper: both models show significant associations
+summary(lm(log(cum.cases+1) ~ GE.EST + pop, data = ols.em2))
+summary(coxph(surv ~ GE.EST + pop, data = surv.em))
+
+```
+
+### Freedom and democracy
+```{r eval=TRUE, collapse=TRUE}
+# freedom index has very and significant association
+summary(lm(log(cum.cases+1) ~ free + pop, data = ols.em2))
+summary(coxph(surv ~ free + pop, data = surv.em))
+```
+### Experts access to policy making
+```{r eval=TRUE, collapse=TRUE}
+# SGI expert score: strong associations in the 'wrong' direction
+summary(lm(log(cum.cases+1) ~ sgi_experts + pop, data = ols.em2))
+summary(coxph(surv ~ sgi_experts + pop, data = surv.em))
+```
+
+### Party preferences
+```{r eval=TRUE, collapse=TRUE}
+# Party positions: general left-right: some evidence
+summary(lm(log(cum.cases+1) ~ pm_party_lr + pop, data = ols.em2))
+summary(coxph(surv ~ pm_party_lr + pop, data = surv.em))
+
+# Party positions: economic left-right: no effects
+summary(lm(log(cum.cases+1) ~ pm_party_lr_econ + pop, data = ols.em2))
+summary(coxph(surv ~ pm_party_lr_econ + pop, data = surv.em))
+
+# Party positions: GAL/TAN: no effects
+summary(lm(log(cum.cases+1) ~ pm_party_galtan + pop, data = ols.em2))
+summary(coxph(surv ~ pm_party_galtan + pop, data = surv.em))
+```
+
+### Organizational characteristics
+```{r eval=TRUE, collapse=TRUE}
+# Type of ministry: some evidence; not sure how to interpret
+summary(lm(log(cum.cases+1) ~ hm_min_type + pop, data = ols.em2))
+summary(coxph(surv ~ hm_min_type + pop, data = surv.em))
+
+# Health minister a medic: no evidence
+summary(lm(log(cum.cases+1) ~ hm_medic + pop, data = ols.em2))
+summary(coxph(surv ~ hm_medic + pop, data = surv.em))
+
+```
+### Government type
+```{r eval=TRUE, collapse=TRUE}
+# Number of parties in government: no association
+summary(lm(log(cum.cases+1) ~ n_parties + pop, data = ols.em2))
+summary(coxph(surv ~ n_parties + pop, data = surv.em))
+
+# Minority government: no association
+summary(lm(log(cum.cases+1) ~ minority + pop, data = ols.em2))
+summary(coxph(surv ~ minority + pop, data = surv.em))
+
+# Caretaker government: neither
+summary(lm(log(cum.cases+1) ~ caretaker + pop, data = ols.em2))
+summary(coxph(surv ~ caretaker + pop, data = surv.em))
+```
+### Institutional contraints
+```{r eval=TRUE, collapse=TRUE}
+# Federalism: kind of significant
+summary(lm(log(cum.cases+1) ~ federalism + pop, data = ols.em2))
+summary(coxph(surv ~ federalism + pop, data = surv.em))
+
+# Regionalism: significant in the OLS model
+summary(lm(log(cum.cases+1) ~ rai + pop, data = ols.em2))
+summary(coxph(surv ~ rai + pop, data = surv.em))
+```

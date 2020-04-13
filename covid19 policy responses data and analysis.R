@@ -8,6 +8,7 @@ library(wbstats)
 library(haven)
 library(countrycode)
 library(car)
+library(survival)
 
 # Get data and subset ----------------------------------------------------------------
 # download the dataset from the ECDC website to a local temporary file
@@ -222,20 +223,37 @@ write.csv(tvc.l, file = './output data/tvc_l_09042020.csv')
 write.csv(tvc.em, file = './output data/tvc_em_09042020.csv')
 write.csv(tvc.ems, file = './output data/tvc_ems_09042020.csv')
 
+save(tvc.s, file = './output data/tvc_s_09042020.RData')
+save(tvc.e, file = './output data/tvc_e_09042020.RData')
+save(tvc.l, file = './output data/tvc_l_09042020.RData')
+save(tvc.em, file = './output data/tvc_em_09042020.RData')
+save(tvc.ems, file = './output data/tvc_ems_09042020.RData')
+
+
 # Subset for OLS analysis and save--------------------------------
 # subset the data to the dates on which restrictions occured and the last they if they did not
 
 
 ols.s <- europep [(europep$school.d == 1 & europep$remove.school == FALSE) |
                     (is.na(europep$schools) & europep$date == max (europep$date)),]
+ols.s2 <- europep [(europep$school.d == 1 & europep$remove.school == FALSE) |
+                    (is.na(europep$schools) & europep$date == '2020-04-01'),]
 ols.e <- europep [(europep$events.d == 1 & europep$remove.events == FALSE) |
                     (is.na(europep$events) & europep$date == max (europep$date)),]
+ols.e2 <- europep [(europep$events.d == 1 & europep$remove.events == FALSE) |
+                    (is.na(europep$events) & europep$date == '2020-04-01'),]
 ols.l <- europep [(europep$lockdown.d == 1 & europep$remove.lockdown == FALSE) |
                     (is.na(europep$lockdown) & europep$date == max (europep$date)),]
+ols.l2 <- europep [(europep$lockdown.d == 1 & europep$remove.lockdown == FALSE) |
+                    (is.na(europep$lockdown) & europep$date == '2020-04-01'),]
 ols.em <- europep [(europep$emerg.d == 1 & europep$remove.emerg == FALSE) |
                     (is.na(europep$emerg) & europep$date == max (europep$date)),]
+ols.em2 <- europep [(europep$emerg.d == 1 & europep$remove.emerg == FALSE) |
+                     (is.na(europep$emerg) & europep$date == '2020-04-01'),]
 ols.ems <- europep [(europep$emerg.state.d == 1 & europep$remove.emerg.state == FALSE) |
                      (is.na(europep$emerg.state) & europep$date == max (europep$date)),]
+ols.ems2 <- europep [(europep$emerg.state.d == 1 & europep$remove.emerg.state == FALSE) |
+                      (is.na(europep$emerg.state) & europep$date == '2020-04-01'),]
 
 write.csv(ols.s, file = './output data/ols_s_09042020.csv')
 write.csv(ols.e, file = './output data/ols_e_09042020.csv')
@@ -243,6 +261,17 @@ write.csv(ols.l, file = './output data/ols_l_09042020.csv')
 write.csv(ols.em, file = './output data/ols_em_09042020.csv')
 write.csv(ols.ems, file = './output data/ols_ems_09042020.csv')
 
+write.csv(ols.s2, file = './output data/ols_s2_09042020.csv')
+write.csv(ols.e2, file = './output data/ols_e2_09042020.csv')
+write.csv(ols.l2, file = './output data/ols_l2_09042020.csv')
+write.csv(ols.em2, file = './output data/ols_em2_09042020.csv')
+write.csv(ols.ems2, file = './output data/ols_ems2_09042020.csv')
+
+save(ols.s2, file = './output data/ols_s2_09042020.RData')
+save(ols.e2, file = './output data/ols_e2_09042020.RData')
+save(ols.l2, file = './output data/ols_l2_09042020.RData')
+save(ols.em2, file = './output data/ols_em2_09042020.RData')
+save(ols.ems2, file = './output data/ols_ems2_09042020.RData')
 # Subset for survival analysis and save--------------------------------
 # subset the data to the dates on which restrictions occured and the last they if they did not
 
@@ -254,6 +283,8 @@ first.cases <- europep %>%
   select (country, first.case.date)
 
 europep<-left_join (europep, first.cases, by = 'country')
+
+europep <- europep [europep$date < '2020-04-02',]
 
 surv.s <- europep %>% 
   group_by(country) %>% 
@@ -303,15 +334,11 @@ surv.ems <- europep %>%
           growth.cases.daily = cum.cases / as.numeric(duration),
           censored = ifelse (is.na(lockdown),1,0))
 
-library(survival)
 surv.s$surv<-Surv(surv.s$duration, surv.s$censored==0)  
 surv.e$surv<-Surv(surv.e$duration, surv.e$censored==0)  
 surv.l$surv<-Surv(surv.l$duration, surv.l$censored==0)  
 surv.em$surv<-Surv(surv.em$duration, surv.l$censored==0)  
 surv.ems$surv<-Surv(surv.ems$duration, surv.l$censored==0)  
-
-plot(survfit(surv ~ federalism, data = surv.l, conf.int=TRUE), lwd=3, lty=c(1,2), col=c("red", "blue"), axes=T,
-     xlab="Years after public opinion poll", cex.lab=1.5)
 
 summary(coxph(surv ~ growth.cases.daily, data = surv.l))
 
@@ -324,31 +351,9 @@ write.csv(surv.l, file = './output data/surv_l_09042020.csv')
 write.csv(surv.em, file = './output data/surv_l_09042020.csv')
 write.csv(surv.ems, file = './output data/surv_l_09042020.csv')
 
+save(surv.s, file = './output data/surv_s_09042020.RData')
+save(surv.e, file = './output data/surv_e_09042020.RData')
+save(surv.l, file = './output data/surv_l_09042020.RData')
+save(surv.em, file = './output data/surv_em_09042020.RData')
+save(surv.ems, file = './output data/surv_ems_09042020.RData')
 
-# Plot of restriction date per number of cases ----------------------------
-# schools
-plot (NULL, xlim = c(as.Date("2020-03-01"), as.Date("2020-03-20")), ylim=c(0,log(25000) ))
-
-points (x = ols.s$date, y = log(ols.s$cum.cases), cex=0.1)
-text (ols.s$iso3c, x = ols.s$date, y = log(ols.s$cum.cases), cex=0.75)
-
-
-# lockdowns
-plot (NULL, xlim = c(as.Date("2020-03-01"), as.Date("2020-04-10")), ylim=c(0,log(25000) ))
-
-points (x = ols.l$date, y = log(ols.l$cum.cases), cex=0.1)
-text (ols.l$iso3c, x = ols.l$date, y = log(ols.l$cum.cases), cex=0.75)
-
-
-# Plot of policy by number of cases and deaths --------------------------
-par (mfrow=c(1,2),
-     bty='n')
-temp <- ds[ds$school.d==1,]
-plot (x = log(temp$cases+1), y = log(temp$deaths+1), type = 'p', cex = 0.1, ylim= c(0,5), 
-      main = 'Cases and deaths when schools were closed in each country')
-text (temp$iso3c, x = log(temp$cases+1), y = jitter(log(temp$deaths+1), amount = 0.1), cex = 0.75, col = 'red')
-
-temp <- dl[dl$lockdown.d==1,]
-plot (x = log(temp$cases+1), y = log(temp$deaths+1), type = 'p', cex = 0.1,
-      main = 'Cases and deaths when lockdown was imposed in each country')
-text (temp$iso3c, x = log(temp$cases+1), y = jitter(log(temp$deaths+1), amount = 0.1), cex = 0.75, col = 'red')
